@@ -87,7 +87,7 @@ $config = array(
 	),
 
 	// images
-	'outfit_images_url' => 'https://outfit-images.ots.me/latest_walk/animoutfit.php', // set to animoutfit.php for animated outfit
+	'outfit_images_url' => 'https://outfit-images.ots.me/latest/animoutfit.php', // set to animoutfit.php for animated outfit
 	'item_images_url' => 'images/items/', // set to images/items if you host your own items in images folder
 
 	// account
