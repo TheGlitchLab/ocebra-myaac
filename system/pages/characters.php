@@ -67,7 +67,6 @@
     }
 </style>
 
-<?php global $db, $config, $template_path, $twig, $achievements ?>
 <?php
 /**
  * Characters
@@ -330,22 +329,22 @@ WHERE killers.death_id = '" . $death['id'] . "' ORDER BY killers.final_hit DESC,
                 $count = count($killers);
                 foreach ($killers as $killer) {
                     $i++;
-                    if ($killer['player_name'] != "") {
-                        if ($i == 1)
-                            $description .= "Killed at level <b>" . $death['level'] . "</b>";
-                        else if ($i == $count)
-                            $description .= " and";
-                        else
-                            $description .= ",";
+                        if ($killer['player_name'] != "") {
+                            if ($i == 1)
+                                $description .= "Killed at level <b>" . $death['level'] . "</b>";
+                            else if ($i == $count)
+                                $description .= " and";
+                            else
+                                $description .= ",";
 
-                        $description .= " by ";
-                        if ($killer['monster_name'] != "")
-                            $description .= $killer['monster_name'] . " summoned by ";
+                            $description .= " by ";
+                            if ($killer['monster_name'] != "")
+                                $description .= $killer['monster_name'] . " summoned by ";
 
-                        if ($killer['player_exists'] == 0)
-                            $description .= getPlayerLink($killer['player_name']);
-                        else
-                            $description .= $killer['player_name'];
+                            if ($killer['player_exists'] == 0)
+                                $description .= getPlayerLink($killer['player_name']);
+                            else
+                                $description .= $killer['player_name'];
                     } else {
                         if ($i == 1)
                             $description .= "Died at level <b>" . $death['level'] . "</b>";
@@ -358,7 +357,7 @@ WHERE killers.death_id = '" . $death['id'] . "' ORDER BY killers.final_hit DESC,
                     }
                 }
 
-                $deaths[] = array('time' => $death['date'], 'description' => $description . '.');
+                $deaths[] = array('time' => $death['date'], 'description' => $description .'.');
             }
         }
     } else if ($db->hasTableAndColumns('player_deaths', ['time', 'level', 'killed_by', 'is_player'])) {
@@ -382,13 +381,13 @@ WHERE killers.death_id = '" . $death['id'] . "' ORDER BY killers.final_hit DESC,
                 $mostdmg = ($death['mostdamage_by'] !== $death['killed_by']) ? true : false;
                 if ($mostdmg) {
                     $mostdmg = ($death['mostdamage_is_player']) ? getPlayerLink($death['mostdamage_by']) : $death['mostdamage_by'];
-                    $description .= ' and by ' . $mostdmg;
+                    $description .= ' and by ' . $mostdmg . '.';
 
                     if ($death['mostdamage_unjustified']) {
                         $description .= ' <span style="color: red; font-style: italic;">(unjustified)</span>';
                     }
                 } else {
-                    $description .= " <b>(soled)</b>";
+                    $description .= ".";
                 }
 
                 $deaths[] = array('time' => $death['time'], 'description' => $description);
@@ -465,24 +464,28 @@ WHERE killers.death_id = '" . $death['id'] . "' ORDER BY killers.final_hit DESC,
     $achievementPoints = 0;
     $listAchievement = [];
     require_once BASE . '/tools/achievements.php';
+
     foreach ($achievements as $achievement => $value) {
         $achievementStorage = $config['achievements_base'] + $achievement;
-        $achievementsPlayer = $db->query("SELECT `key`, `value` FROM `player_storage` WHERE `key` = {$achievementStorage} AND `player_id` = {$player->getId()}")->fetch();
+        $searchAchievementsbyStorage = $db->query('SELECT `key`, `value` FROM `player_storage` WHERE `key` = ' . $achievementStorage . ' AND `player_id` = ' . $player->getId() . '');
+        $achievementsPlayer = $searchAchievementsbyStorage->fetch();
+
         if ($achievementsPlayer && $achievementsPlayer['key'] == $achievementStorage) {
             $achievementPoints = $achievementPoints + $value['points'];
+
             $insertAchievement = [
                 'BASE_URL' => BASE_URL,
                 'PATH_URL' => $template_path,
-                'name'     => $value['name'],
-                'grade'    => $value['grade'],
-                'secret'   => $value['secret'] ?? false,
+                'name' => $value['name'],
+                'grade' => $value['grade'],
+                'secret' => $value['secret'] ?? false,
             ];
+            $listAchievement[] = $insertAchievement;
         }
     }
-    $listAchievement[] = $insertAchievement ?? [];
 
     $twig->display('characters.html.twig', array(
-        'outfit' => $outfit ?? null,
+        'outfit' => isset($outfit) ? $outfit : null,
         'player' => $player,
         'achievementPoints' => $achievementPoints,
         'achievements' => $listAchievement,
@@ -516,12 +519,11 @@ WHERE killers.death_id = '" . $death['id'] . "' ORDER BY killers.final_hit DESC,
             'name' => isset($house['id']) ? (isset($house['name']) ? $house['name'] : $house['id']) : null,
             'town' => isset($house['town']) ? ' (' . $config['towns'][$house['town']] . ')' : ''
         ),
-        'balance' => number_format($player->getBalance(), 0, ',', ','),
         'guild' => array(
             'rank' => isset($guild_name) ? $rank_of_player->getName() : null,
             'link' => isset($guild_name) ? getGuildLink($guild_name) : null
         ),
-        'comment' => !empty($comment) ? nl2br($comment) : null,
+        'comment' => !empty($comment) ? wordwrap(nl2br($comment), 60, "<br/>", true) : null,
         'skills' => isset($skills) ? $skills : null,
         'quests_enabled' => $quests_enabled,
         'quests' => isset($quests) ? $quests : null,

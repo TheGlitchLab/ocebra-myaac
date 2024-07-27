@@ -118,12 +118,16 @@ $account_players = $account_logged->getPlayersList();
                                                                     <tr>
                                                                         <td><select style="width: 100%;"
                                                                                     name="auction_character">
-                                                                                <?php foreach ($account_players as $player) {
-                                                                                    $item = "{$player->getname()} | Level {$player->getLevel()} | Vocation: {$player->getVocationName()}"
-                                                                                    ?>
-                                                                                    <option
-                                                                                        value="<?= $player->getId() ?>"><?= $item ?></option>
-                                                                                <?php } ?>
+                                                                                    <?php foreach ($account_players as $player) {
+                                                                                // Check if the player's level is greater than 8
+                                                                                if ($player->getLevel() > 8) {
+                                                                                    $item = "{$player->getname()} | Level {$player->getLevel()} | Vocation: {$player->getVocationName()}";
+                                                                            ?>
+                                                                                    <option value="<?= $player->getId() ?>"><?= $item ?></option>
+                                                                            <?php
+                                                                                }
+                                                                            }
+                                                                            ?>
                                                                             </select></td>
                                                                     </tr>
                                                                     </tbody>

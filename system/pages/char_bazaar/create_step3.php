@@ -4,12 +4,12 @@ if (isset($_POST['auction_submit']) && isset($_POST['auction_character'])) {
     $selectCharacter = $_POST['auction_character'];
 
     /* PLAYERS */
-    $getCharacter = $db->query('SELECT `id`, `account_id`, `name`, `level`, `vocation`, `sex`, `health`, `healthmax`, `mana`, `manamax`, `maglevel`, `manaspent`, `balance`, `skill_fist`, `skill_fist_tries`, `skill_club`, `skill_club_tries`, `skill_sword`, `skill_sword_tries`, `skill_axe`, `skill_axe_tries`, `skill_dist`, `skill_dist_tries`, `skill_shielding`, `skill_shielding_tries`, `skill_fishing`, `skill_fishing_tries`, `skill_shielding`, `skill_shielding_tries`, `cap`, `experience`, `created`, `soul`, `blessings`' . 'FROM `players`' . 'WHERE `id` = ' . $db->quote($selectCharacter) . '');
+    $getCharacter = $db->query('SELECT `id`, `account_id`, `name`, `level`, `vocation`, `sex`, `health`, `healthmax`, `mana`, `manamax`, `maglevel`, `manaspent`, `balance`, `skill_fist`, `skill_fist_tries`, `skill_club`, `skill_club_tries`, `skill_sword`, `skill_sword_tries`, `skill_axe`, `skill_axe_tries`, `skill_dist`, `skill_dist_tries`, `skill_shielding`, `skill_shielding_tries`, `skill_fishing`, `skill_fishing_tries`, `skill_shielding`, `skill_shielding_tries`, `cap`, `experience`, `created`, SUM(`blessings` + `blessings1` + `blessings2` + `blessings3` + `blessings4` + `blessings5` + `blessings6` + `blessings7`) AS `total_blessings`' . 'FROM `players`' . 'WHERE `id` = ' . $db->quote($selectCharacter) . '');
     $getCharacter = $getCharacter->fetch();
     /* PLAYERS END */
 
     /* ACCOUNT BY PLAYER */
-    $getAccount = $db->query('SELECT `id`, `premdays`, `coins`' . 'FROM `accounts`' . 'WHERE `id` = ' . $getCharacter['account_id'] . '');
+    $getAccount = $db->query("SELECT `id`, `premdays`, `coins`, `coins_transferable` FROM `accounts` WHERE `id` = {$getCharacter['account_id']}");
     $getAccount = $getAccount->fetch();
     if ($getAccount['premdays'] > 0) {
         $character_prem = '<b>Premium Account</b>';
@@ -25,7 +25,7 @@ if (isset($_POST['auction_submit']) && isset($_POST['auction_character'])) {
     }
 
     if ($getCharacter['vocation'] == 0) {
-        $character_voc = 'None';
+        $character_voc = 'No Vocation';
     } elseif ($getCharacter['vocation'] == 1) {
         $character_voc = 'Sorcerer';
     } elseif ($getCharacter['vocation'] == 2) {
@@ -46,7 +46,7 @@ if (isset($_POST['auction_submit']) && isset($_POST['auction_character'])) {
         $character_voc = 'None';
     }
 
-    $getAccountLogged = $db->query('SELECT `id`, `premdays`, `coins`' . 'FROM `accounts`' . 'WHERE `id` = ' . $account_logged->getId() . '');
+    $getAccountLogged = $db->query("SELECT `id`, `premdays`, `coins`, `coins_transferable` FROM `accounts` WHERE `id` = {$account_logged->getId()}");
     $getAccountLogged = $getAccountLogged->fetch();
     if ($getAccountLogged['premdays'] > 0) {
         $character_prem = '<b>Premium Account</b>';
@@ -154,7 +154,7 @@ if (isset($_POST['auction_submit']) && isset($_POST['auction_character'])) {
                                                 <td style="font-weight:normal;">
                                                     <?= $getAccount['coins'] ?> <img
                                                         src="<?= $template_path; ?>/images/account/icon-tibiacoin.png">
-                                                    (<?= $getAccount['coins'] ?> <img
+                                                    (<?= $getAccount['coins_transferable'] ?> <img
                                                         src="<?= $template_path; ?>/images/account/icon-tibiacointrusted.png">)
                                                 </td>
                                                 <td style="font-weight:normal;">
@@ -220,7 +220,7 @@ if (isset($_POST['auction_submit']) && isset($_POST['auction_character'])) {
                                                         <div
                                                             class="AuctionCharacterName"><?= $getCharacter['name'] ?></div>
                                                         Level: <?= $getCharacter['level'] ?> |
-                                                        Vocation: <?= $character_voc ?> | <?= $character_sex ?><br>
+                                                        Vocation: <?= $character_voc ?> | <?= $character_sex ?> | World: <?= $config['lua']['serverName'] ?>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -229,61 +229,58 @@ if (isset($_POST['auction_submit']) && isset($_POST['auction_character'])) {
                                     </div>
                                 </td>
                             </tr>
-
                             <tr>
                                 <td>
                                     <table style="width: 100%;" cellspacing="0" cellpadding="0">
                                         <tbody>
                                         <tr>
-                                            <td style="vertical-align:top;width:210px;;">
+                                            <td style="vertical-align:top;width:210px;">
                                                 <div class="TableContentContainer">
                                                     <table class="TableContent" style="border:1px solid #faf0d7;"
                                                            width="100%">
                                                         <tbody>
-                                                        <tr class="Even">
+                                                        <tr class="Odd">
                                                             <td><span class="LabelV">Health:</span>
                                                                 <div
-                                                                    style="float:right; text-align: right;"><?= $getCharacter['health'] ?>
-                                                                    / <?= $getCharacter['healthmax'] ?></div>
+                                                                    style="float:right; text-align: right;"><?= $getCharacter['healthmax'] ?></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="Even">
+                                                            <td><span class="LabelV">Mana:</span>
+                                                                <div
+                                                                    style="float:right; text-align: right;"><?= $getCharacter['manamax'] ?></div>
                                                             </td>
                                                         </tr>
                                                         <tr class="Odd">
-                                                            <td><span class="LabelV">Mana:</span>
-                                                                <div
-                                                                    style="float:right; text-align: right;"><?= $getCharacter['mana'] ?>
-                                                                    / <?= $getCharacter['manamax'] ?></div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="Even">
                                                             <td><span class="LabelV">Capacity:</span>
                                                                 <div
                                                                     style="float:right; text-align: right;"><?= $getCharacter['cap'] ?></div>
                                                             </td>
                                                         </tr>
-                                                        <tr class="Odd">
-                                                            <td><span class="LabelV">Soul:</span>
+                                                        <tr class="Even">
+                                                            <td><span class="LabelV">Speed:</span>
                                                                 <div
-                                                                    style="float:right; text-align: right;"><?= $getCharacter['soul'] ?></div>
+                                                                    style="float:right; text-align: right;"><?= $getCharacter['level'] + 109 ?></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="Odd">
+                                                            <td><span class="LabelV">Blessings:</span>
+                                                                <div
+                                                                    style="float:right; text-align: right;"><?= $getCharacter['total_blessings'] ?>/7</div>
                                                             </td>
                                                         </tr>
                                                         <tr class="Even">
-                                                            <td><span class="LabelV">Blessings:</span>
-                                                                <div
-                                                                    style="float:right; text-align: right;"><?= $getCharacter['blessings'] ?></div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="Odd">
                                                             <td><span class="LabelV">Mounts:</span>
                                                                 <div style="float:right; text-align: right;">-</div>
                                                             </td>
                                                         </tr>
-                                                        <tr class="Even">
+                                                        <tr class="Odd">
                                                             <td><span class="LabelV">Outfits:</span>
                                                                 <div style="float:right; text-align: right;">-
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                        <tr class="Odd">
+                                                        <tr class="Even">
                                                             <td><span class="LabelV">Titles:</span>
                                                                 <div style="float:right; text-align: right;">-</div>
                                                             </td>
@@ -438,7 +435,7 @@ if (isset($_POST['auction_submit']) && isset($_POST['auction_character'])) {
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr class="Odd">
+                                            <tr class="Odd" hidden>
                                                 <td><span class="LabelV">Achievement Points:</span>
                                                     <div style="float:right; text-align: right;">-</div>
                                                 </td>
@@ -448,7 +445,8 @@ if (isset($_POST['auction_submit']) && isset($_POST['auction_character'])) {
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <!-- TODO: need get info -->
+                            <tr hidden>
                                 <td>
                                     <div class="TableContentContainer">
                                         <table class="TableContent" style="border:1px solid #faf0d7;" width="100%">

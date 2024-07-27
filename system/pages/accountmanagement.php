@@ -1,5 +1,4 @@
 <?php
-global $config, $db, $account_logged, $logged, $action, $template_path, $twig;
 /**
  * Account management
  *
@@ -68,12 +67,13 @@ if ($action == '') {
     $account_coins = $account_logged->getCustomField('coins');
     $acc_coins_transfer = $account_logged->getCustomField('coins_transferable');
     $tournament_coins = $account_logged->getCustomField('tournament_coins');
+    $loyalty_points = $account_logged->getCustomField('loyalty');
 
-    $tag = isVipSystemEnabled() ? 'VIP' : "Premium";
+    $tag = isVipSystemEnabled() ? 'Premium' : "Premium";
     $account_status = $account_logged->isPremium()
-        ? "<b><span style='color: green;'>{$tag} Account, {$daysLeft} left</span></b>"
+        ? "<b><span style='color: green;'>{$tag} Account</span></b>"
         : (!isVipSystemEnabled() && $freePremium
-            ? "<b><span style='color: green;'>Free Premium Account</span></b>"
+            ? "<b><span style='color: green;'>Premium Account</span></b>"
             : '<b><span style="color: red;">Free Account</span></b>');
 
     if (empty($recovery_key)) {
@@ -86,6 +86,7 @@ if ($action == '') {
     }
 
     $account_created = $account_logged->getCreated();
+    $account_loyalty = $account_logged->getCustomField("loyalty");
     $account_email = $account_logged->getEMail();
     $email_new_time = $account_logged->getCustomField("email_new_time");
     if ($email_new_time > 1)
@@ -100,13 +101,6 @@ if ($action == '') {
             $welcome_message = '<span style="color: red">Your account is banished FOREVER!</span>';
     else
         $welcome_message = 'Welcome to your ' . configLua('serverName') . ' account!';
-
-    $verify_message = "";
-    if ($config['mail_enabled'] && $config['account_mail_verify'] && $account_logged->getCustomField('email_verified') != '1') {
-      $verifyLink = getLink('account/resend/verify');
-      $type = ($config['account_verified_only'] ?? false) ? 'required' : 'optional';
-      $verify_message = "<span style='color: red'>Verification is {$type}! Please <b><a href='{$verifyLink}'>Verify</a></b> your Account!</span>";
-    }
 
     $email_change = '';
     $email_request = false;
@@ -131,12 +125,13 @@ if ($action == '') {
 
     $expiresIn = $account_logged->getExpirePremiumTime();
     $accountExpire = $expiresIn > 0 && $expiresIn > time()
-        ? ["Your VIP Time will expire in " . date("M d Y, G:i:s", $expiresIn), false]
-        : ['You do not have VIP time!', true];
+        ? ["Your Premium Time will expire at " . date("M d Y, G:i:s", $expiresIn), false]
+        : ['Your do not have Premium time!', true];
+
+    $daysLeft = "(Balance of Premium Time: $daysLeft)";
 
     $twig->display('account.management.html.twig', array(
         'welcome_message' => $welcome_message,
-        'verify_message' => $verify_message,
         'recovery_key' => $recovery_key,
         'email_change' => $email_change,
         'email_request' => $email_request,
@@ -147,6 +142,8 @@ if ($action == '') {
         'account_coins' => $account_coins,
         'account_coins_transferable' => $acc_coins_transfer,
         'tournament_coins' => $tournament_coins,
+        'loyalty_points' => $loyalty_points,
+        'loyalty_title' => get_loyalty_title($loyalty_points),
         'account_email' => $account_email,
         'account_created' => $account_created,
         'account_web_lastlogin' => $account_logged->getCustomField('web_lastlogin'),
@@ -156,6 +153,7 @@ if ($action == '') {
         'account_location' => $account_location,
         'account_phone' => $account_phone,
         'account_expire_time' => $accountExpire,
+        'daysLeft' => $daysLeft,
         'tag' => $tag,
         'actions' => $actions,
         'players' => $account_players,

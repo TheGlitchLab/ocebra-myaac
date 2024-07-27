@@ -13,26 +13,6 @@ foreach ($auctions as $auction) { /* LOOP AUCTIONS */
     $outfit_url = "{$config['outfit_images_url']}?id={$character['looktype']}" . (!empty($character['lookaddons']) ? "&addons={$character['lookaddons']}" : '') . "&head={$character['lookhead']}&body={$character['lookbody']}&legs={$character['looklegs']}&feet={$character['lookfeet']}";
     /* OUTFIT CHARACTER */
 
-    /* EQUIPAMENT CHARACTER */
-    global $db;
-    $eq_sql = $db->query("SELECT `pid`, `itemtype` FROM player_items WHERE player_id = {$auction['player_id']} AND (`pid` >= 1 and `pid` <= 10)");
-    $equipment = array();
-    foreach ($eq_sql as $eq) {
-        $equipment[$eq['pid']] = $eq['itemtype'];
-    }
-    $empty_slots = array("", "no_helmet", "no_necklace", "no_backpack", "no_armor", "no_handleft", "no_handright", "no_legs", "no_boots", "no_ring", "no_ammo");
-    for ($i = 0; $i <= 10; $i++) {
-        if (!isset($equipment[$i]) || $equipment[$i] == 0)
-            $equipment[$i] = $empty_slots[$i];
-    }
-
-    for ($i = 1; $i < 11; $i++) {
-        $equipment[$i] = Validator::number($equipment[$i])
-            ? getItemImage($equipment[$i])
-            : "<img src='images/items/{$equipment[$i]}.gif' width='32' height='32' border='0' alt='{$equipment[$i]}' />";
-    }
-    /* EQUIPAMENT CHARACTER END */
-
     /* CONVERT SEX */
     $character_sex = $config['genders'][$character['sex']] ?? ($character['sex'] == 0 ? 'Male' : 'Female');
     /* CONVERT SEX END */
@@ -131,17 +111,6 @@ foreach ($auctions as $auction) { /* LOOP AUCTIONS */
                                 <div class="AuctionBody">
                                     <div class="AuctionBodyBlock AuctionDisplay AuctionOutfit"><?= $ribbon_status ?>
                                         <img class="AuctionOutfitImage" src="<?= $outfit_url ?>">
-                                    </div>
-                                    <div class="AuctionBodyBlock AuctionDisplay AuctionItemsViewBox">
-                                        <?php foreach ([2, 1, 3, 6, 4, 5, 9, 7, 10] as $i) { ?>
-                                            <div class="CVIcon CVIconObject"><?= $equipment[$i]; ?></div>
-                                        <?php } ?>
-                                        <div class="CVIcon CVIconObject NoEquipment" title="soul">
-                                            <p>Soul<br><?= $character['soul'] ?></p></div>
-                                        <div class="CVIcon CVIconObject"
-                                             title="boots"><?= $equipment[8]; ?></div>
-                                        <div class="CVIcon CVIconObject NoEquipment" title="cap">
-                                            <p>Cap<br><?= $character['cap'] ?></p></div>
                                     </div>
                                     <div class="AuctionBodyBlock ShortAuctionData">
                                         <?php $dateFormat = $subtopic == 'currentcharactertrades' ? 'M d Y, H:i:s' : 'd M Y' ?>
@@ -275,8 +244,33 @@ foreach ($auctions as $auction) { /* LOOP AUCTIONS */
                                         <?php } else { ?> <!-- LOGGED END -->
                                             <div class="AuctionBodyBlock CurrentBid">
                                                 <div class="Container">
-                                                    <div class="MyMaxBidLabel" style="font-weight: normal;">
-                                                        Please login first.
+                                                    <div class="MyMaxBidLabel">My Bid Limit</div>
+                                                        <form
+                                                            action="?subtopic=<?= $subtopic ?>&action=bid"
+                                                            method="post">
+                                                            <input type="hidden"
+                                                                   name="auction_iden"
+                                                                   value="<?= $auction['id'] ?>">
+                                                            <input class="MyMaxBidInput"
+                                                                   type="number"
+                                                                   name="maxbid"
+                                                                   min="<?= $auction['price'] ?>">
+                                                            <div class="BigButton"
+                                                                 style="background-image:url(<?= $template_path; ?>/images/global/buttons/sbutton_green.gif)">
+                                                                <div
+                                                                    onmouseover="MouseOverBigButton(this);"
+                                                                    onmouseout="MouseOutBigButton(this);">
+                                                                    <div
+                                                                        class="BigButtonOver"
+                                                                        style="background-image: url(<?= $template_path; ?>/images/global/buttons/sbutton_green_over.gif); visibility: hidden;"></div>
+                                                                    <input
+                                                                        name="auction_confirm"
+                                                                        class="BigButtonText"
+                                                                        onclick="window.location.href = '?account/manage'"
+                                                                        value="Bid On Auction">
+                                                                </div>
+                                                            </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -294,4 +288,5 @@ foreach ($auctions as $auction) { /* LOOP AUCTIONS */
     <?php
 } /* LOOP END */
 ?>
+
 

@@ -75,9 +75,9 @@ $title = 'Event Schedule';
           <div class="Text">
             <div class="eventscheduleheadertop">
               <div class="eventscheduleheaderblockleft">
-                <div class="eventscheduleheaderdateblock"> <span class="eventscheduleheaderleft"></span><?php echo date('M Y') ?><span class="eventscheduleheaderright"><!--<a href="<?php echo '?eventcalendar&mes='.$mes.'&dia='.($diacorrente+1) ?>" style="color:white;">»</a>--></span> </div>
+                <div class="eventscheduleheaderdateblock"> <span class="eventscheduleheaderleft"></span><?php echo date('F Y') ?><span class="eventscheduleheaderright"><!--<a href="<?php echo '?eventcalendar&mes='.$mes.'&dia='.($diacorrente+1) ?>" style="color:white;">»</a>--></span> </div>
               </div>
-              <div class="eventscheduleheaderblockright"><?php echo date('Y-m-d H:i') ?></div>
+              <div class="eventscheduleheaderblockright"><?php echo date('d-m-Y') ?></div>
             </div>
           </div>
           <span class="CaptionVerticalRight" style="background-image:url(https://static.tibia.com/images/global/content/box-frame-vertical.gif);"></span> <span class="CaptionBorderBottom" style="background-image:url(https://static.tibia.com/images/global/content/table-headline-border.gif);"></span> <span class="CaptionEdgeLeftBottom" style="background-image:url(https://static.tibia.com/images/global/content/box-frame-edge.gif);"></span> <span class="CaptionEdgeRightBottom" style="background-image:url(https://static.tibia.com/images/global/content/box-frame-edge.gif);"></span> </div>
@@ -93,7 +93,7 @@ function MostreSemanas(){
 	$semanas = array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
 
 	for($i = 0; $i < 7; $i++)
-	 echo "<td>".$semanas{$i}."</td>";
+	 echo "<td>".$semanas[$i]."</td>";
 }
 
 function GetNumeroDias($mes){
@@ -113,6 +113,7 @@ function GetNomeMes($mes){
                      '07' => "July",   '08' => "August",    '09' => "September",
                      '10' => "October", '11' => "November",  '12' => "December"
                      );
+
       if( $mes >= 01 && $mes <= 12)
         return $meses[$mes];
 
@@ -125,7 +126,12 @@ function MostreCalendario($mes){
 	$nome_mes = GetNomeMes($mes);
 	$diacorrente = 0;
 
-	$diasemana = jddayofweek( cal_to_jd(CAL_GREGORIAN, $mes,"01",date('Y')) , 0 );	// função que descobre o dia da semana
+    $diasemana = jddayofweek(cal_to_jd(CAL_GREGORIAN, $mes, "1", date('Y')), 0);// função que descobre o dia da semana
+
+    $diasemana = $diasemana - 1;
+    if ($diasemana < 0) {
+        $diasemana = 6;
+    }
 
 	 echo "<tr style='text-align:center; width:120px; background-color:#5f4d41;'>";
 	   MostreSemanas();	// função que mostra as semanas aqui

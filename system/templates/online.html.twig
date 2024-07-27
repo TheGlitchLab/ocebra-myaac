@@ -21,28 +21,34 @@
 							<div class="InnerTableContainer">
 								<table style="width: 100%">
 									<tbody>
-									{% if not status.online %}
-										<tr style="text-align: center">
-											<td>{{ config.lua.serverName }} Server is offline.</td>
 										</tr>
-									{% else %}
-										<tr>
 											<td width="25%" class="LabelV150">Status: </td>
-											<td>Online</td>
+                      {% if not status.online %}
+  											<td><b>Offline</b></td>
+                        {% else %}
+  											<td><b>Online</b></td>
+                      {% endif %}
 										</tr>
 										<tr>
 											<td width="25%" class="LabelV150">Players Online:</td>
-											<td>{{ players|length }} Players Online</td>
+											<td>{{ players|length }}</td>
 										</tr>
 										<tr>
 											<td class="LabelV150">Online Record:</td>
 											<td>{{ record|raw }}</td>
 										</tr>
-										<tr>
-											<td class="LabelV150">Location Datacenter:</td>
-											<td>Brasil<br><small>(Server Date: UTC - {{ current_date }})</small></td>
+                    <tr>
+											<td class="LabelV150">Creation Date:</td>
+											<td>January 2024</td>
 										</tr>
-									{% endif %}
+										<tr>
+											<td class="LabelV150">Location:</td>
+											<td>{{config['date_timezone']}}</td>
+										</tr>
+                    <tr>
+											<td class="LabelV150">PVP Type:</td>
+											<td>{{config.lua.worldType}}</td>
+										</tr>
 									</tbody>
 								</table>
 							</div>
@@ -51,6 +57,7 @@
 				</table>
 			</div>
 		</td>
+    {% if config.lua.worldType != 'no-pvp' %}
 		<td width="50%" style="padding: 0px 0px 10px 5px;">
 			<div class="TableContainer">
 				<div class="CaptionContainer">
@@ -85,7 +92,9 @@
 	</tr>
 	</tbody>
 </table>
+{% endif %}
 
+{% if status.online %}
 <table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr>
 		<td>
 			<div class="TableContainer">
@@ -173,6 +182,7 @@
 	</tbody>
 </table>
 <br>
+{% endif %}
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr>
 		<td>
@@ -197,38 +207,36 @@
 											<div class="TableContentContainer">
 												<table class="TableContent" width="100%">
 													<tbody>
-													{% if players|length == 0 %}
-													<tr style="text-align: center">
-														<td>Currently no one is playing on {{ config.lua.serverName }}.</td>
-													</tr>
-													{% else %}
-													<tr bgcolor="#D4C0A1">
-														{% if config.account_country %}
-															<td class="LabelV150">#</td>
-														{% endif %}
-														{% if config.online_outfit %}
-															<td class="LabelV150">Outfit</td>
-														{% endif %}
-														<td class="LabelV150">Name</td>
-														<td class="LabelV150">Level</td>
-														<td class="LabelV150">Vocation</td>
-													</tr>
-													{% set i = 0 %}
-													{% for player in players %}
-														{% set i = i + 1 %}
-														<tr bgcolor="{{ getStyle(i) }}" style="height: 44px;">
-															{% if config.account_country %}
-																<td width="4%">{{ player.country_image|raw }}</td>
-															{% endif %}
-															{% if config.online_outfit %}
-																<td width="10%"><img style="position:absolute;margin-top:{% if player.player.looktype in [75, 266, 302] %}-20px;margin-left:-0px;{% else %}-45px;margin-left:-25px;{%  endif %}" src="{{ player.outfit }}" alt="player outfit"/></td>
-															{% endif %}
-															<td width="50%">{{ player.name|raw }}{{ player.skull }}</td>
-															<td>{{ player.level }}</td>
-															<td>{{ player.vocation }}</td>
-														</tr>
-													{% endfor %}
-													{% endif %}
+                        {% if status.online %}
+                          {% if players|length == 0 %}
+                            <tr style="text-align: center">
+                              <td colspan="{% if config.online_outfit %}4{% else %}3{% endif %}">Currently no one is playing on {{ config.lua.serverName }}.</td>
+                            </tr>
+                          {% else %}
+                            <tr bgcolor="#D4C0A1">
+                              {% if config.online_outfit %}
+                                <td class="LabelV150">Outfit</td>
+                              {% endif %}
+                              <td class="LabelV150">Name</td>
+                              <td class="LabelV150">Level</td>
+                              <td class="LabelV150">Vocation</td>
+                            </tr>
+                            {% for player in players %}
+                              <tr bgcolor="{{ getStyle(loop.index) }}">
+                                {% if config.online_outfit %}
+                                  <td width="10%"><img style="position:absolute;margin-top:{% if player.player.looktype in [75, 266, 302] %}-20px;margin-left:-0px;{% else %}-45px;margin-left:-25px;{%  endif %}" src="{{ player.outfit }}" alt="player outfit"/></td>
+                                {% endif %}
+                                <td width="70%">{{ player.name|raw }}  {{ player.country_image|raw }}{{ player.skull }}</td>
+                                <td width="10">{{ player.level }}</td>
+                                <td width="20">{{ player.vocation }}</td>
+                              </tr>
+                            {% endfor %}
+                          {% endif %}
+                        {% else %}
+                          <tr style="text-align: center">
+                            <td>Server is <b>Offline</b>.</td>
+                          </tr>
+                        {% endif %}
 													</tbody>
 												</table>
 											</div>

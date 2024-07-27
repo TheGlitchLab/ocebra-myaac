@@ -8,7 +8,7 @@
 			<div class="BoxFrameVerticalRight" style="background-image:url({{ PATH_URL }}/images/global/content/box-frame-vertical.gif);"></div>
 			<table style="width:100%;">
 				<tbody>
-				<tr><td style="width:100%;text-align:center;"><nobr>[<a href="{{ BASE_URL }}?achievements#Grade+1">Grade 1</a>]</nobr> <nobr>[<a href="{{ BASE_URL }}?achievements#Grade+2">Grade 2</a>]</nobr> <nobr>[<a href="{{ BASE_URL }}?achievements#Grade+3">Grade 3</a>]</nobr> <nobr>[<a href="{{ BASE_URL }}?achievements#Grade+4">Grade 4</a>]</nobr> <nobr>[<a href="{{ BASE_URL }}?achievements#Secret+Achievements">Secret Achievements</a>]</nobr> </td></tr>
+				<tr><td style="width:100%;text-align:center;"><nobr>[<a href="{{ BASE_URL }}?achievements#Ranks">Ranks</a>]</nobr> <nobr>[<a href="{{ BASE_URL }}?achievements#Grade+1">Grade 1</a>]</nobr> <nobr>[<a href="{{ BASE_URL }}?achievements#Grade+2">Grade 2</a>]</nobr> <nobr>[<a href="{{ BASE_URL }}?achievements#Grade+3">Grade 3</a>]</nobr> <nobr>[<a href="{{ BASE_URL }}?achievements#Grade+4">Grade 4</a>]</nobr> <nobr>[<a href="{{ BASE_URL }}?achievements#Secret+Achievements">Secret Achievements</a>]</nobr> </td></tr>
 				</tbody>
 			</table>
 		</div>
@@ -26,6 +26,77 @@
 	<li><b>Grade 3:</b> 7-9 points </li>
 	<li><b>Grade 4:</b>&nbsp;&nbsp;10 points </li>
 </ul>
+
+<p>The more achievement points you have, the higher rank you will get.</p>
+
+<div class="TableContainer">
+  <div class="CaptionContainer">
+    <div class="CaptionInnerContainer">
+      <span class="CaptionEdgeLeftTop" style="background-image:url(templates/tibiacom/images/global/content/box-frame-edge.gif);"></span>
+      <span class="CaptionEdgeRightTop" style="background-image:url(templates/tibiacom/images/global/content/box-frame-edge.gif);"></span>
+      <span class="CaptionBorderTop" style="background-image:url(templates/tibiacom/images/global/content/table-headline-border.gif);"></span>
+      <span class="CaptionVerticalLeft" style="background-image:url(templates/tibiacom/images/global/content/box-frame-vertical.gif);"></span>
+      <div class="Text">
+        <font color="white">Ranks</font>
+      </div>
+      <span class="CaptionVerticalRight" style="background-image:url(templates/tibiacom/images/global/content/box-frame-vertical.gif);"></span>
+      <span class="CaptionBorderBottom" style="background-image:url(templates/tibiacom/images/global/content/table-headline-border.gif);"></span>
+      <span class="CaptionEdgeLeftBottom" style="background-image:url(templates/tibiacom/images/global/content/box-frame-edge.gif);"></span>
+      <span class="CaptionEdgeRightBottom" style="background-image:url(templates/tibiacom/images/global/content/box-frame-edge.gif);"></span>
+    </div>
+  </div>
+  <table class="Table3" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td>
+          <div class="InnerTableContainer">
+            <table style="width:100%;">
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="TableContentContainer">
+                      <table border="0" cellpadding="4" cellspacing="1" width="100%">
+                        <tbody>
+                          <tr bgcolor="#D4C0A1">
+                            <td width="40%">Beginner</td>
+                            <td><b>50</b> Points
+							<td><b>5%</b> Loot Bonus</td>
+							<td><b>0%</b> Exp Bonus</td>
+                          </tr>
+                          <tr bgcolor="#F1E0C6">
+                            <td width="40%">Adventurer</td>
+                            <td><b>150</b> Points
+							<td><b>5%</b> Loot Bonus</td>
+							<td><b>5%</b> Exp Bonus</td>
+                          </tr>
+                          <tr bgcolor="#D4C0A1">
+                            <td width="40%">Explorer</td>
+                            <td><b>300</b> Points
+							<td><b>10%</b> Loot Bonus</td>
+							<td><b>5%</b> Exp Bonus</td>
+                            </td>
+                          </tr>
+                          <tr bgcolor="#F1E0C6">
+							<td width="40%">Pathfinder</td>
+                            <td><b>300</b> Points
+							<td><b>15%</b> Loot Bonus</td>
+							<td><b>15%</b> Exp Bonus</td>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 <br>
 <a name="Grade+1"></a>
 <div class="TopButtonContainer"><div class="TopButton"><a href="#top"><img style="border:0px;" src="{{ PATH_URL }}/images/global/content/back-to-top.gif"></a></div></div>
@@ -57,7 +128,7 @@
 												<div class="TableContentContainer">
 													<table class="TableContent" width="100%">
 														<tbody>
-														<tr bgcolor="#D4C0A1"><td><b>{{ achievement.name }}</b></td></tr>
+														<tr bgcolor="#D4C0A1"><td><b>{{ achievement.name }}</b> - {{ achievement.points }} points</td></tr>
 														<tr bgcolor="#F1E0C6"><td>{{ achievement.description }}</td></tr>
 														</tbody>
 													</table>
@@ -112,7 +183,7 @@
 													<div class="TableContentContainer">
 														<table class="TableContent" width="100%">
 															<tbody>
-															<tr bgcolor="#D4C0A1"><td><b>{{ achievement.name }}</b></td></tr>
+															<tr bgcolor="#D4C0A1"><td><b>{{ achievement.name }}</b> - {{ achievement.points }} points</td></tr>
 															<tr bgcolor="#F1E0C6"><td>{{ achievement.description }}</td></tr>
 															</tbody>
 														</table>
@@ -168,7 +239,7 @@
 													<div class="TableContentContainer">
 														<table class="TableContent" width="100%">
 															<tbody>
-															<tr bgcolor="#D4C0A1"><td><b>{{ achievement.name }}</b></td></tr>
+															<tr bgcolor="#D4C0A1"><td><b>{{ achievement.name }}</b> - {{ achievement.points }} points</td></tr>
 															<tr bgcolor="#F1E0C6"><td>{{ achievement.description }}</td></tr>
 															</tbody>
 														</table>

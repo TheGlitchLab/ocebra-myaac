@@ -45,8 +45,16 @@ if ($now > $serverSaveTime) {
     $serverSaveTime->modify('+1 day');
 }
 
+$worldMap = array(
+    'no-pvp' => 'Optional PvP',
+    'pvp-enforced' => 'Retro Hardcore PvP',
+    'pvp' => 'Retro Open PvP',
+);
+
 $twig->display('serverinfo.html.twig', [
-    'serverSave' => $explodeServerSave,
+    'worldType' => $worldMap[configLua('worldType')],
+    'serverSave' => configLua('globalServerSaveTime'),
+    'freeBlessings' => configLua('adventurersBlessingLevel'),
     'serverSaveTime' => $serverSaveTime->format('Y, n-1, j, G, i, s'),
     'rateUseStages' => $rateUseStages = getBoolean(configLua('rateUseStages')),
     'rateStages' => $rateUseStages && isset($config['lua']['rateStages']) ? $config['lua']['rateStages'] : [],
@@ -60,6 +68,8 @@ $twig->display('serverinfo.html.twig', [
     'rateSkill' => configLua('rateSkill'),
     'rateLoot' => configLua('rateLoot'),
     'rateSpawn' => configLua('rateSpawn'),
+    'rateBestiary' => configLua('bestiaryKillMultiplier'),
+    'rateBosstiary' => configLua('bosstiaryKillMultiplier'),
     'houseLevel' => $houseLevel,
     'pzLocked' => $pzLocked,
     'whiteSkullTime' => $whiteSkullTime,

@@ -1,11 +1,11 @@
 body {
   margin: 0px;
-  padding: 0px;
+  padding:  0px;
   background-color: #051122;
 }
 
 img {
-  border: none;
+	border: none;
 }
 
 #ArtworkHelper {
@@ -24,7 +24,7 @@ img {
   cursor: help;
 }
 .OptionContainer {
-  text-align: center;
+    text-align: center;
 }
 
 #HelperDivContainer {
@@ -32,16 +32,12 @@ img {
   position: absolute;
   width: 225px;
   z-index: 1000;
-  color: #5a2800;
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
+  color: #5A2800;
+  font-family: Verdana, Arial, Times New Roman, sans-serif;
   font-size: 9pt;
   text-align: left;
   padding: 10px;
-  border: 1px double #5a2800;
+  border: 1px double #5A2800;
   margin-left: 8px;
 }
 
@@ -90,17 +86,17 @@ img {
   margin-right: auto;
   padding: 0px;
   display: table;
-  width: expression(document.body.clientWidth > 1200? '1200px': '100%');
+  width: expression(document.body.clientWidth > 1200? "1200px": "100%" );
 }
 #LoginCreateAccountBox p {
-  margin: 0;
-  padding: 0;
-  font-size: 12pt;
+    margin: 0;
+    padding: 0;
+    font-size: 12pt;
 }
 #LoginFormButtonCell {
-  width: 145px;
-  vertical-align: top;
-  padding-right: 0;
+    width: 145px;
+    vertical-align: top;
+    padding-right: 0;
 }
 
 #ContentRow {
@@ -121,7 +117,7 @@ img {
   margin-right: 15px;
   margin-left: 15px;
   padding: 0px;
-  font-family: Arial, sans-serif;
+  font-family:  Arial, sans-serif;
   font-size: 10pt;
   font-weight: bold;
   line-height: 12pt;
@@ -135,7 +131,7 @@ img {
 }
 
 #ThemeboxesColumn {
-  text-align: center;
+  text-align:  center;
   position: absolute;
   top: 0px;
   right: 0px;
@@ -146,11 +142,7 @@ img {
 }
 
 #Footer {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
+  font-family: Verdana, Arial, Times New Roman, sans-serif;
   font-size: 7pt;
   font-weight: normal;
   text-align: center;
@@ -165,26 +157,11 @@ img {
 }
 
 /* Footer linkes */
-#Footer a:link {
-  color: white;
-  text-decoration: none;
-}
-#Footer a:visited {
-  color: white;
-  text-decoration: none;
-}
-#Footer a:focus {
-  color: white;
-  text-decoration: none;
-}
-#Footer a:active {
-  color: white;
-  text-decoration: underline;
-}
-#Footer a:hover {
-  color: white;
-  text-decoration: underline;
-}
+#Footer a:link    { color: white; text-decoration: none; }
+#Footer a:visited { color: white; text-decoration: none; }
+#Footer a:focus   { color: white; text-decoration: none; }
+#Footer a:active  { color: white; text-decoration: underline; }
+#Footer a:hover   { color: white; text-decoration: underline; }
 
 /** -------------------------------
  *  Stylesheet declarations for the
@@ -199,12 +176,12 @@ img {
   top: -140px;
   left: 4px;
   background-repeat: no-repeat;
-  z-index: 5;
+  z-index:5;
 }
 
 #LeftArtwork #TibiaLogoArtworkTop {
   position: absolute;
-  top: -17px;
+  top: 15px;
   left: -14px;
   height: 158px;
   width: 196px;
@@ -222,13 +199,13 @@ img {
   z-index: 5;
 }
 
-#LeftArtwork #Statue_1 {
+#LeftArtwork #Statue_1{
   position: absolute;
   top: 0px;
   left: 5px;
   height: 30px;
   width: 32px;
-  z-index: 10;
+  z-index:10;
 }
 
 #LeftArtwork #Statue_2 {
@@ -237,71 +214,71 @@ img {
   right: 25px;
   height: 30px;
   width: 32px;
-  z-index: 10;
+  z-index:10;
 }
 
 .SmallMenuBox#DownloadBox {
-  top: 4px;
+    top: 4px;
 }
 .SmallMenuBox {
-  position: relative;
-  left: 5px;
-  top: 8px;
-  width: 100%;
-  margin-bottom: 38px;
-  background-repeat: no-repeat;
+    position: relative;
+    left: 5px;
+    top: 8px;
+    width: 100%;
+    margin-bottom: 38px;
+    background-repeat: no-repeat;
 }
 .SmallMenuBox#DownloadBox {
-  top: 4px;
+    top: 4px;
 }
 .SmallMenuBox .SmallBoxTop {
-  position: absolute;
-  left: -5px;
-  top: -12px;
-  height: 12px;
-  width: 180px;
-  background-repeat: no-repeat;
+    position: absolute;
+    left: -5px;
+    top: -12px;
+    height: 12px;
+    width: 180px;
+    background-repeat: no-repeat;
 }
 .SmallMenuBox#DownloadBox .SmallBoxBorder {
-  height: 39px;
+    height: 39px;
 }
 .SmallMenuBox .SmallBoxBorder {
-  position: absolute;
-  top: 0;
-  height: 52px;
-  width: 8px;
-  background-repeat: repeat-y;
-  z-index: 10;
+    position: absolute;
+    top: 0;
+    height: 52px;
+    width: 8px;
+    background-repeat: repeat-y;
+    z-index: 10;
 }
 .SmallMenuBox .SmallBoxButtonContainer {
-  position: relative;
-  height: 39px;
-  width: 160px;
-  left: 5px;
-  background-repeat: repeat-y;
-  z-index: 1;
+    position: relative;
+	height: 39px;
+    width: 160px;
+    left: 5px;
+    background-repeat: repeat-y;
+    z-index: 1;
 }
 #PlayNowContainer {
-  position: absolute;
-  width: 150px;
-  height: 37px;
-  top: 1px;
-  left: 5px;
-  z-index: 99;
+    position: absolute;
+    width: 150px;
+    height: 37px;
+    top: 1px;
+    left: 5px;
+    z-index: 99;
 }
 .SmallMenuBox .BorderRight {
-  right: 9px;
+    right: 9px;
 }
 .SmallMenuBox#DownloadBox .SmallBoxBottom {
-  top: 39px;
+    top: 39px;
 }
 .SmallMenuBox .SmallBoxBottom {
-  position: absolute;
-  top: 52px;
-  left: -5px;
-  height: 12px;
-  width: 180px;
-  background-repeat: no-repeat;
+    position: absolute;
+    top: 52px;
+    left: -5px;
+    height: 12px;
+    width: 180px;
+    background-repeat: no-repeat;
 }
 
 #LeftArtwork #LogoLink {
@@ -328,7 +305,7 @@ img {
   position: absolute;
   height: 64px;
   width: 64px;
-  top: -136px;
+  top: -131px;
   left: -15px;
   z-index: 15;
   cursor: pointer;
@@ -338,7 +315,7 @@ img {
   position: absolute;
   height: 64px;
   width: 64px;
-  top: -136px;
+  top: -131px;
   left: 40px;
   z-index: 15;
   cursor: pointer;
@@ -352,19 +329,15 @@ img {
   height: 85px;
 }
 #Pedestal {
-  position: absolute;
-  left: -15px;
-  top: -121px;
-  width: 161px;
-  height: 85px;
+    position: absolute;
+    left: -15px;
+    top: -121px;
+    width: 161px;
+    height: 85px;
 }
 
 #RightArtwork #PlayersOnline {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
+  font-family : Verdana, Arial, Times New Roman, sans-serif;
   font-size: 7pt;
   line-height: 8pt;
   text-align: center;
@@ -440,7 +413,7 @@ img {
   cursor: pointer;
 }
 
-#Loginbox #LoginstatusText_1 {
+#Loginbox .LoginstatusText_1 {
   top: 2px;
   cursor: default;
 }
@@ -472,7 +445,7 @@ img {
   position: relative;
   top: 0px;
   left: 0px;
-  width: 150px;
+  width: 170px;
   height: 37px;
   visibility: hidden;
 }
@@ -530,9 +503,10 @@ img {
 .Button {
   position: relative;
   height: 32px;
-  /*width: 150px;*/
+  width: 170px;
   visibility: hidden;
   display: block;
+  background-repeat: no-repeat;
 }
 
 .Extend {
@@ -577,17 +551,19 @@ img {
 .Icon {
   position: absolute;
   height: 32px;
-  width: 32px;
+  width: 40px;
   top: 0px;
   left: 8px;
+  background-repeat: no-repeat;
 }
 
 .Label {
-  position: absolute;
-  height: 22px;
-  width: 116px;
-  top: 6px;
-  left: 42px;
+    position: absolute;
+    height: 23px;
+    width: 140px;
+    top: 3px;
+    left: 42px;
+    background-repeat: no-repeat;
 }
 
 /* Submenus(items) */
@@ -614,7 +590,7 @@ img {
   position: relative;
   margin-left: 0px;
   margin-right: 5px;
-  background-color: #0d2e2b;
+  background-color: #0D2E2B;
   width: 170px;
 }
 
@@ -645,26 +621,11 @@ img {
 }
 
 /* Submenu links */
-.Submenu a:link {
-  color: #d7d7d7;
-  text-decoration: none;
-}
-.Submenu a:visited {
-  color: #d7d7d7;
-  text-decoration: none;
-}
-.Submenu a:focus {
-  color: #d7d7d7;
-  text-decoration: none;
-}
-.Submenu a:active {
-  color: white;
-  text-decoration: none;
-}
-.Submenu a:hover {
-  color: white;
-  text-decoration: none;
-}
+.Submenu a:link    { color: #d7d7d7; text-decoration: none; }
+.Submenu a:visited { color: #d7d7d7; text-decoration: none; }
+.Submenu a:focus   { color: #d7d7d7; text-decoration: none; }
+.Submenu a:active  { color: white; text-decoration: none; }
+.Submenu a:hover   { color: white; text-decoration: none; }
 
 /** -------------------------------
  *  Stylesheet declarations for the
@@ -700,82 +661,34 @@ img {
   position: relative;
 }
 
-.InfoBar {
-  position: relative;
-  height: 28px;
-  top: 6px;
-  margin-left: 5px;
-  margin-right: 5px;
-  font-size: 10px;
-  color: #fff;
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
+.PageNavigation {
+    padding-right: 10px;
+    padding-bottom: 7px;
 }
-.InfoBar a {
-  border: 0;
+
+.PageLink {
+    display: inline-block;
+    min-width: 15px;
+    text-align: center;
 }
-.InfoBarBlock {
-  margin-right: 15px;
-  border: 0;
-}
-.InfoBarBigLogo {
-  margin-bottom: 0;
-  border: 0;
-}
-.InfoBarSmallElement {
-  margin-left: 5px;
-  border: 0;
-}
-.InfoBarNumbers {
-  top: -4px;
-  position: relative;
-}
-.InfoBar a {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
-  font-size: 7pt;
-  font-weight: 400;
-  color: #fff;
-}
-.InfoBar a:link {
-  color: #fff;
-  font-weight: 400;
-  text-decoration: none;
-}
-.InfoBar a:visited {
-  color: #fff;
-  font-weight: 400;
-  text-decoration: none;
-}
-.InfoBar a:focus {
-  color: #fff;
-  font-weight: 400;
-  text-decoration: none;
-}
-.InfoBar a:active {
-  color: #fff;
-  font-weight: 400;
-  text-decoration: underline;
-}
+
+.InfoBar{position:relative;height:28px;top:6px;margin-left:5px;margin-right:5px;font-size:10px;color:#fff;font-family:Verdana,Arial,Times New Roman,sans-serif}.InfoBar a{border:0}.InfoBarBlock{margin-right:15px;border:0}.InfoBarBigLogo{margin-bottom:0;border:0}.InfoBarSmallElement{margin-left:5px;border:0}.InfoBarNumbers{top:-4px;position:relative}.InfoBar a{font-family:Verdana,Arial,Times New Roman,sans-serif;font-size:7pt;font-weight:400;color:#fff}.InfoBar a:link{color:#fff;font-weight:400;text-decoration:none}.InfoBar a:visited{color:#fff;font-weight:400;text-decoration:none}.InfoBar a:focus{color:#fff;font-weight:400;text-decoration:none}.InfoBar a:active{color:#fff;font-weight:400;text-decoration:underline}
 .InfoBar a:hover {
-  color: #fff !important;
-  font-weight: 400 !important;
-  text-decoration: underline !important;
+	color:#fff !important;
+	font-weight:400 !important;
+	text-decoration: underline!important;
 }
 .InfoBarLinks {
-  text-decoration: none;
-  font-size: 10px;
+	text-decoration: none;
+	font-size: 10px;
 }
 .InfoBarLinks a:hover {
-  text-decoration: none;
-  font-size: 10px;
+	text-decoration: none;
+	font-size: 10px;
 }
+
+
+
 
 /* "star-HTML-hack" to to implement min-width in IE */
 * html #ContentHelper {
@@ -791,7 +704,7 @@ img {
   position: relative;
   margin: 5px;
   margin-bottom: 18px;
-  color: #5a2800;
+  color: #5A2800;
   border-left: 2px solid #3a3738;
   border-right: 2px solid #3a3738;
   background-color: #debb9d;
@@ -800,14 +713,10 @@ img {
 }
 
 .Content .BoxContent {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
+  font-family: Verdana, Arial, Times New Roman, sans-serif;
   font-size: 9pt;
-  background-color: #fff2db;
-  color: #5a2800;
+  background-color: #FFF2db;
+  color: #5A2800;
   min-height: 367px;
   height: auto !important;
   height: 387px;
@@ -823,11 +732,7 @@ img {
 }
 
 .Content th {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
+  font-family: Verdana, Arial, Times New Roman, sans-serif;
   font-size: 10pt;
   font-weight: bold;
   text-align: left;
@@ -836,36 +741,24 @@ img {
 }
 
 .Content .BoxContent td {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
+  font-family: Verdana, Arial, Times New Roman, sans-serif;
   font-size: 10pt;
-  color: #5a2800;
-}
+  color: #5A2800;
+ }
 
 /* Content Links */
 
 .Content a {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
+  font-family: Verdana, Arial, Times New Roman, sans-serif;
   font-weight: bold;
   color: #004294;
   text-decoration: none;
 }
 .Content a:hover {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
+  font-family: Verdana, Arial, Times New Roman, sans-serif;
   font-weight: bold;
   text-decoration: underline;
-  color: #0063dc;
+  color: #0063DC;
 }
 .Content .HelpLink {
   font-size: 7pt;
@@ -899,7 +792,7 @@ img {
 
 .Content .CornerWrapper-b {
   position: absolute;
-  width: 100%;
+  width:100%;
 }
 
 .Content .Corner-bl {
@@ -921,12 +814,12 @@ img {
 }
 
 .SecretAchievementIcon {
-  position: absolute;
-  width: 44px;
-  height: 20px;
-  margin-left: 12px;
-  margin-top: -2px;
-  right: 5px;
+	position: absolute;
+	width: 44px;
+	height: 20px;
+	margin-left: 12px;
+	margin-top: -2px;
+	right: 5px
 }
 
 /* Borders */
@@ -1004,53 +897,53 @@ img {
 }
 
 #PremiumBox {
-  position: relative;
-  height: 204px;
+    position: relative;
+    height: 204px
 }
 #PremiumBoxDecor {
-  margin: 0;
-  position: absolute;
-  top: -28px;
-  left: 5px;
-  width: 64px;
-  height: 64px;
+    margin: 0;
+    position: absolute;
+    top: -28px;
+    left: 5px;
+    width: 64px;
+    height: 64px
 }
 #PremiumBoxBg {
-  margin: 0;
-  position: absolute;
-  top: 34px;
-  left: 10px;
-  width: 160px;
-  height: 126px;
+    margin: 0;
+    position: absolute;
+    top: 34px;
+    left: 10px;
+    width: 160px;
+    height: 126px
 }
 #PremiumBoxOverlay {
-  margin: 0;
-  position: absolute;
-  top: 34px;
-  left: 10px;
-  width: 163px;
-  height: 26px;
+    margin: 0;
+    position: absolute;
+    top: 34px;
+    left: 10px;
+    width: 163px;
+    height: 26px
 }
 #PremiumBoxOverlayText {
-  color: #fff;
-  font-family: Verdana, sans-serif;
-  margin-top: 3px;
-  text-align: center;
-  font-size: 11px;
+    color: #fff;
+    font-family: Verdana, sans-serif;
+    margin-top: 3px;
+    text-align: center;
+    font-size: 11px
 }
 #PremiumBoxButtonDecor {
-  position: absolute;
-  width: 114px;
-  height: 26px;
-  left: 33px;
-  bottom: 34px;
-  z-index: 25;
+    position: absolute;
+    width: 114px;
+    height: 26px;
+    left: 33px;
+    bottom: 34px;
+    z-index: 25
 }
 #PremiumBoxButton {
-  position: absolute;
-  bottom: 9px;
-  left: 18px;
-  text-align: center;
+    position: absolute;
+    bottom: 9px;
+    left: 18px;
+    text-align: center
 }
 
 #Themeboxes #JobBox {
@@ -1071,7 +964,7 @@ img {
   font-family: Verdana, Arial, sans-serif;
   font-weight: bold;
   line-height: 11pt;
-  color: #5a2800;
+  color: #5A2800;
   position: absolute;
   height: 70px;
   width: 150px;
@@ -1137,31 +1030,31 @@ img {
  */
 
 .Content .BoxContent td .white {
-  color: #efefef;
+  color: #EFEFEF;
   visibility: visible;
 }
 
 .Content .BoxContent td .whites {
-  color: #efefef;
+  color: #EFEFEF;
   visibility: visible;
   font-size: 9pt;
 }
 
 .Content .BoxContent .white {
-  color: #efefef;
+  color: #EFEFEF;
   visibility: visible;
 }
 
 .Content .BoxContent td .green {
-  color: #00bf00;
+  color: #00BF00;
 }
 
 .Content .BoxContent td .yellow {
-  color: #ffbb05;
+  color: #FFBB05;
 }
 
 .Content .BoxContent td .red {
-  color: #ef0000;
+  color: #EF0000;
 }
 
 .Content .BoxContent td .grey {
@@ -1169,7 +1062,7 @@ img {
 }
 
 .Content .BoxContent td .orange {
-  color: #ff9712;
+  color: #FF9712;
 }
 
 /** -------------------------------
@@ -1179,146 +1072,98 @@ img {
  */
 
 .Content .BoxContent .ff_info {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
-  font-size: 10pt;
-  color: #5a2800;
-  visibility: visible;
+  font-family : Verdana, Arial, Times New Roman, sans-serif;
+  font-size : 10pt;
+  color : #5A2800;
+  visibility : visible;
 }
 
 .Content .ff_white a {
-  color: #ffffff;
+  color: #FFFFFF;
 }
 
 .Content .BoxContent .ff_white {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
-  color: #efefef;
-  visibility: visible;
-  font-size: 7pt;
+  font-family : Verdana, Arial, Times New Roman, sans-serif;
+  color : #EFEFEF;
+  visibility : visible;
+  font-size : 7pt;
   font-weight: bold;
 }
 
 .Content .BoxContent .ff_red {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
-  color: #ef0000;
-  visibility: visible;
-  font-size: 8pt;
+  font-family : Verdana, Arial, Times New Roman, sans-serif;
+  color : #EF0000;
+  visibility : visible;
+  font-size : 8pt;
   font-weight: bold;
 }
 
 .Content .BoxContent .ff_whitelarge {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
-  color: #efefef;
-  visibility: visible;
-  font-size: 9pt;
+  font-family : Verdana, Arial, Times New Roman, sans-serif;
+  color : #EFEFEF;
+  visibility : visible;
+  font-size : 9pt;
   font-weight: bold;
 }
 
 .Content .BoxContent .ff_info {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
-  font-size: 8pt;
-  color: #5a2800;
-  visibility: visible;
+  font-family : Verdana, Arial, Times New Roman, sans-serif;
+  font-size : 8pt;
+  color : #5A2800;
+  visibility : visible;
 }
 
 .Content .BoxContent .ff_infotext {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
-  font-size: 8pt;
-  color: #5a2800;
-  visibility: visible;
+  font-family : Verdana, Arial, Times New Roman, sans-serif;
+  font-size : 8pt;
+  color : #5A2800;
+  visibility : visible;
   line-height: 12pt;
 }
 
 .Content .BoxContent .ff_smallinfo {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
-  font-size: 7pt;
-  color: #5a2800;
-  visibility: visible;
+  font-family : Verdana, Arial, Times New Roman, sans-serif;
+  font-size : 7pt;
+  color : #5A2800;
+  visibility : visible;
 }
 
 .Content .BoxContent .ff_large {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
-  font-size: 12pt;
-  color: #5a2800;
-  visibility: visible;
+  font-family : Verdana, Arial, Times New Roman, sans-serif;
+  font-size : 12pt;
+  color : #5A2800;
+  visibility : visible;
 }
 
 .Content .BoxContent .ff_pagetext {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
-  font-size: 9pt;
-  color: #5a2800;
-  visibility: visible;
+  font-family : Verdana, Arial, Times New Roman, sans-serif;
+  font-size : 9pt;
+  color : #5A2800;
+  visibility : visible;
   line-height: 13pt;
 }
 
 .Content .BoxContent .ff_pagetextgrey {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
-  font-size: 9pt;
-  color: #505050;
-  visibility: visible;
+  font-family : Verdana, Arial, Times New Roman, sans-serif;
+  font-size : 9pt;
+  color : #505050;
+  visibility : visible;
   line-height: 13pt;
 }
 
 .Content .BoxContent .ff_pagetextred {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
-  font-size: 9pt;
-  color: #f00;
-  visibility: visible;
+  font-family : Verdana, Arial, Times New Roman, sans-serif;
+  font-size : 9pt;
+  color : #F00;
+  visibility : visible;
   line-height: 13pt;
 }
 
 .Content .BoxContent .ff_correct {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
-  font-size: 11pt;
-  color: #ff0000;
-  visibility: visible;
+  font-family : Verdana, Arial, Times New Roman, sans-serif;
+  font-size : 11pt;
+  color : #FF0000;
+  visibility : visible;
   font-weight: bold;
 }
 
@@ -1409,6 +1254,7 @@ img {
   height: 26px;
 }
 
+
 /** ----------------
  *  new process bars
  *  ----------------
@@ -1493,7 +1339,7 @@ img {
   left: 0px;
   width: 100%;
   height: 7px;
-  background: #ffffff none repeat scroll 0%;
+  background: #FFFFFF none repeat scroll 0%;
 }
 * html #ProgressBar .Tube {
   top: 13px;
@@ -1529,6 +1375,7 @@ img {
   right: -77px;
 }
 
+
 /** -------------------------------
  *  Stylesheet declarations for the
  *  NEW TABLES
@@ -1548,11 +1395,17 @@ img {
   background-color: #d5c0a1;
 }
 .Text {
-  margin-top: 3px;
-  margin-left: 4px;
-  margin-bottom: 2px;
-  padding: 3px;
-  padding-top: 3px;
+	margin-top: 3px;
+	margin-left: 4px;
+	margin-bottom: 2px;
+	padding: 3px;
+	padding-top: 3px;
+}
+
+.CaptionContainer .RightArea {
+    float: right;
+    font-weight: 400;
+    margin-right: 5px;
 }
 
 /* TABLEHEADER DECORATION */
@@ -1565,7 +1418,7 @@ img {
   text-align: left;
 }
 .TableContainer .CaptionContainer .CaptionInnerContainer {
-  position: relative;
+	position: relative;
   background-color: #5f4d41;
   width: 100%;
   height: 100%;
@@ -1573,11 +1426,7 @@ img {
   padding-bottom: 4px;
 }
 .TableContainer .CaptionContainer .Text {
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
+	font-family: Verdana, Arial, Times New Roman, sans-serif;
   font-size: 10pt;
   font-weight: bold;
   text-align: left;
@@ -1587,35 +1436,35 @@ img {
   padding-bottom: 0px;
 }
 .TableContainer .CaptionContainer .CaptionEdgeLeftTop {
-  position: absolute;
+	position: absolute;
   width: 5px;
   height: 5px;
-  top: -2px;
+	top: -2px;
   left: -2px;
   z-index: 50;
 }
 .TableContainer .CaptionContainer .CaptionEdgeRightTop {
-  position: absolute;
+	position: absolute;
   width: 5px;
   height: 5px;
-  top: -2px;
+	top: -2px;
   right: -2px;
   z-index: 50;
 }
 .TableContainer .CaptionContainer .CaptionEdgeLeftBottom {
-  position: absolute;
+	position: absolute;
   width: 5px;
   height: 5px;
-  left: -2px;
-  bottom: -3px;
+	left: -2px;
+	bottom: -3px;
   z-index: 50;
 }
 .TableContainer .CaptionContainer .CaptionEdgeRightBottom {
-  position: absolute;
+	position: absolute;
   width: 5px;
   height: 5px;
-  right: -2px;
-  bottom: -3px;
+	right: -2px;
+	bottom: -3px;
   z-index: 50;
 }
 .TableContainer .CaptionContainer .CaptionBorderTop {
@@ -1664,7 +1513,7 @@ img {
 }
 /* TABLE CONTENT */
 .TableContentContainer {
-  border: 1px solid #5f4d41;
+  border: 1px solid #5F4D41;
   position: relative;
   margin-right: 4px;
   height: 100%;
@@ -1834,73 +1683,75 @@ img {
 }
 /* LABELS */
 .InnerTableContainer .TableContentContainer {
-  box-shadow: 3px 3px 2px #875f3e;
+    box-shadow: 3px 3px 2px #875f3e;
 }
 .TableContentContainer {
-  border: 1px solid #5f4d41;
-  position: relative;
-  margin-right: 7px;
-  margin-bottom: 5px;
-  height: 100%;
-  background-color: #d4c0a1;
-  padding: 0;
+    border: 1px solid #5f4d41;
+    position: relative;
+    margin-right: 7px;
+    margin-bottom: 5px;
+    height: 100%;
+    background-color: #d4c0a1;
+    padding: 0;
 }
 .TableContainer .Table3 .TableContent td {
-  border: 1px solid #faf0d7;
+    border: 1px solid #faf0d7;
 }
 
+
 .TableContainer .GreedyCell {
-  width: 80%;
+    width: 80%;
 }
-.LabelV80 {
-  font-weight: 700;
-  padding-right: 10px;
-  white-space: nowrap;
-  vertical-align: top;
-  width: 80px;
+.LabelV80{
+	font-weight:700;
+	padding-right:10px;
+	white-space:nowrap;
+	vertical-align:top;
+	width:80px;
 }
-.LabelV100 {
-  font-weight: 700;
-  padding-right: 10px;
-  white-space: nowrap;
-  vertical-align: top;
-  width: 100px;
+.LabelV100{
+	font-weight:700;
+	padding-right:10px;
+	white-space:nowrap;
+	vertical-align:top;
+	width:100px;
 }
-.LabelV120 {
-  font-weight: 700;
-  padding-right: 10px;
-  white-space: nowrap;
-  vertical-align: top;
-  width: 120px;
+.LabelV120{
+	font-weight:700;
+	padding-right:10px;
+	white-space:nowrap;
+	vertical-align:top;
+	width:120px;
 }
-.LabelV150 {
-  font-weight: 700;
-  padding-right: 10px;
-  white-space: nowrap;
-  vertical-align: top;
-  width: 150px;
+.LabelV150{
+	font-weight:700;
+	padding-right:10px;
+	white-space:nowrap;
+	vertical-align:top;
+	width:150px;
 }
-.LabelV175 {
-  font-weight: 700;
-  padding-right: 10px;
-  white-space: nowrap;
-  vertical-align: top;
-  width: 175px;
+.LabelV175{
+	font-weight:700;
+	padding-right:10px;
+	white-space:nowrap;
+	vertical-align:top;
+	width:175px;
 }
-.LabelV200 {
-  font-weight: 700;
-  padding-right: 10px;
-  white-space: nowrap;
-  vertical-align: top;
-  width: 200px;
+.LabelV200{
+	font-weight:700;
+	padding-right:10px;
+	white-space:nowrap;
+	vertical-align:top;
+	width:200px;
 }
-.LabelV250 {
-  font-weight: 700;
-  padding-right: 10px;
-  white-space: nowrap;
-  vertical-align: top;
-  width: 250px;
+.LabelV250{
+	font-weight:700;
+	padding-right:10px;
+	white-space:nowrap;
+	vertical-align:top;
+	width:250px;
 }
+
 
 .LabelV {
   font-weight: bold;
@@ -1913,6 +1764,7 @@ img {
   padding-right: 10px;
   white-space: nowrap;
   background-color: #d5c0a1;
+
 }
 .LabelH td {
   background-color: #d5c0a1;
@@ -1957,40 +1809,25 @@ img {
   z-index: 20;
 }
 .BigButtonText {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 135px;
-  height: 25px;
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-  background: 0 0;
-  border: none;
-  text-align: center;
-  color: #ffd18c;
-  font-family:
-    Verdana,
-    Arial,
-    Times New Roman,
-    sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  z-index: 20;
-  text-shadow:
-    -1px -1px 0 #000,
-    0 -1px 0 #000,
-    1px -1px 0 #000,
-    1px 0 0 #000,
-    1px 1px 0 #000,
-    0 1px 0 #000,
-    -1px 1px 0 #000,
-    -1px 0 0 #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 135px;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: none;
+    text-align: center;
+    color: #ffd18c;
+    font-family: Verdana,Arial,Times New Roman,sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    z-index: 20;
+    text-shadow: -1px -1px 0 #000, 0 -1px 0 #000, 1px -1px 0 #000, 1px 0 0 #000, 1px 1px 0 #000, 0 1px 0 #000, -1px 1px 0 #000, -1px 0 0 #000;
 }
-.BigButtonText:hover {
-  top: 1px;
-  left: 1px;
-}
+
 .TopButtonContainer {
   position: relative;
   right: 4px;
@@ -2002,18 +1839,17 @@ img {
 }
 .TopButtonContainer .TopButton {
   position: absolute;
-  right: 0;
+  right: 0px;
   z-index: 55;
-  cursor: pointer;
 }
 
 .Content .BoxContent .Odd {
-  background-color: #d4c0a1;
+  background-color: #D4C0A1;
   padding: 2px;
 }
 
 .Content .BoxContent .Even {
-  background-color: #f1e0c6;
+  background-color: #F1E0C6;
   padding: 2px;
 }
 
@@ -2056,19 +1892,19 @@ img {
 }
 
 .Content #NewsTicker .NewsTickerDate {
-  font-size: 7pt;
+  font-size: 9pt;
   position: absolute;
-  top: 0px;
-  float: left;
 }
 
 .Content #NewsTicker .NewsTickerShortText {
-  margin-left: 85px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-left: 90px;
   height: 14px;
 }
 
 .Content #NewsTicker .NewsTickerFullText {
-  margin-left: 85px;
+  margin-left: 90px;
   margin-right: 20px;
   display: none;
 }
@@ -2089,7 +1925,7 @@ img {
 /* Featured Article */
 
 .Content #FeaturedArticle .BoxContent {
-  position: relative;
+  position:relative;
   height: 100px;
   padding: 5px;
   padding-left: 10px;
@@ -2147,7 +1983,7 @@ img {
   left: 0px;
   margin-left: 5px;
   margin-right: 5px;
-  float: left;
+  float:left;
 }
 
 .Content #FeaturedArticle .NewsHeadlineDate {
@@ -2287,11 +2123,10 @@ img {
   padding: 0;
 }
 
-.moduleRow {
-}
+.moduleRow { }
 
 .moduleRowOver {
-  background-color: #d4c0a1;
-  cursor: pointer;
-  cursor: hand;
+	background-color: #D4C0A1;
+	cursor: pointer;
+	cursor: hand;
 }

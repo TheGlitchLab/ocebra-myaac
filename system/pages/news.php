@@ -143,7 +143,7 @@ if(!$news_cached)
 		$tickers = $tickers_db->fetchAll();
 		foreach($tickers as &$ticker) {
 			$ticker['icon'] = $categories[$ticker['category']]['icon_id'];
-			$ticker['body_short'] = short_text(strip_tags($ticker['body']), 100);
+			$ticker['body_short'] = short_text(preg_replace('/<\/?p>/', '', $ticker['body']), 163);
 		}
 
 		$tickers_content = $twig->render('news.tickers.html.twig', array(

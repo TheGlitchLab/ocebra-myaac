@@ -30,7 +30,7 @@ $config = array(
 	 * WARNING2: on 'dev' all PHP errors/warnings are displayed
 	 * Recommended: 'prod' cause of speed (page load time is better)
 	 */
-	'env' => 'prod', // 'prod' for production and 'dev' for development
+	'env' => 'dev', // 'prod' for production and 'dev' for development
 
 	'template' => 'tibiacom', // template used by website (kathrine, tibiacom)
 	'template_allow_change' => false, // allow users to choose their own template while browsing website?
@@ -39,7 +39,7 @@ $config = array(
 
 	// what client version are you using on this OT?
 	// used for the Downloads page and some templates as well
-    'client' => 1321, // 1321 = client 13.21
+    'client' => 1331, // 1331 = client 13.31
 
 	'session_prefix' => 'myaac_', // must be unique for every site on your server
 	'friendly_urls' => false, // mod_rewrite is required for this, it makes links looks more elegant to eye, and also are SEO friendly (example: https://localhost/guilds/Testing instead of https://localhost?subtopic=guilds&name=Testing). Remember to rename .htaccess.dist to .htaccess
@@ -61,9 +61,9 @@ $config = array(
 	'language' => 'en', // default language (currently only 'en' available)
 	'language_allow_change' => false,
 
-	'visitors_counter' => true,
+	'visitors_counter' => false,
 	'visitors_counter_ttl' => 10, // how long visitor will be marked as online (in minutes)
-	'views_counter' => true,
+	'views_counter' => false,
 
 	// cache system. by default file cache is used
 	'cache_engine' => 'auto', // apc, apcu, eaccelerator, xcache, file, auto, or blank to disable.
@@ -87,7 +87,7 @@ $config = array(
 	),
 
 	// images
-	'outfit_images_url' => './outfit/animoutfit.php', // set to animoutfit.php for animated outfit
+	'outfit_images_url' => 'https://outfit-images.ots.me/latest_walk/animoutfit.php', // set to animoutfit.php for animated outfit
 	'item_images_url' => 'images/items/', // set to images/items if you host your own items in images folder
 
 	// account
@@ -106,7 +106,7 @@ $config = array(
       'message' => 'You received %d %s for confirming your E-Mail address.' // example: You received 20 coins for confirming your E-Mail address.
   ],
 	'account_mail_unique' => true, // email addresses cannot be duplicated? (one account = one email)
-	'account_premium_days' => 0, // default premium days on new account
+	'account_premium_days' => 7, // default premium days on new account
 	'account_welcome_coins' => 0, // default coins on new account
 	'account_welcome_mail' => false, // send welcome email when user registers
     'account_welcome_mail_show_pass' => false, // send password in welcome email
@@ -165,7 +165,7 @@ $config = array(
 
 	// vocations
 	'vocations' => array(
-		0 => 'None',
+		0 => 'No Vocation',
 		1 => 'Sorcerer',
 		2 => 'Druid',
 		3 => 'Paladin',
@@ -178,7 +178,7 @@ $config = array(
 
 	// new character config
 	'character_samples' => array( // vocations, format: ID_of_vocation => 'Name of Character to copy'
-		//0 => 'Rook Sample',
+		0 => 'Rook Sample',
 		1 => 'Sorcerer Sample',
 		2 => 'Druid Sample',
 		3 => 'Paladin Sample',
@@ -192,7 +192,7 @@ $config = array(
 
 	// town list used when creating character
 	// won't be displayed if there is only one item (rookgaard for example)
-	'character_towns' => array(1),
+	'character_towns' => array(8),
 
 	// characters length
 	// This is the minimum and the maximum length that a player can create a character. It is highly recommend the maximum length to be 21.
@@ -230,18 +230,18 @@ $config = array(
 
 	// online page
 	'online_record' => true, // display players record?
-	'online_vocations' => false, // display vocation statistics?
+	'online_vocations' => true, // display vocation statistics?
 	'online_vocations_images' => false, // display vocation images?
 	'online_skulls' => true, // display skull images
-	'online_outfit' => true,
+	'online_outfit' => false,
 	'online_afk' => false,
 
 	// support list page
 	'team_style' => 2, // 1/2 (1 - normal table, 2 - in boxes, grouped by group id)
-	'team_display_status' => true,
-	'team_display_lastlogin' => true,
+	'team_display_status' => false,
+	'team_display_lastlogin' => false,
 	'team_display_world' => false,
-	'team_display_outfit' => true,
+	'team_display_outfit' => false,
 
 	// bans page
 	'bans_limit' => 50,
@@ -252,25 +252,32 @@ $config = array(
 	'highscores_vocation' => true, // show player vocation under his nickname?
 	'highscores_frags' => false, // show 'Frags' tab (best fraggers on the server)? Only 0.3
 	'highscores_balance' => false, // show 'Balance' tab (richest players on the server)
-	'highscores_outfit' => true, // show player outfit?
+	'highscores_outfit' => false, // show player outfit?
 	'highscores_country_box' => false, // doesnt work yet! (not implemented)
-	'highscores_groups_hidden' => 3, // this group id and higher won't be shown on the highscores
-	'highscores_ids_hidden' => array(0), // this ids of players will be hidden on the highscores (should be ids of samples)
-	'highscores_length' => 100, // how many records per page on highscores
+	'highscores_groups_hidden' => 6, // this group id and higher won't be shown on the highscores
+	'highscores_account_id' => 1,
+	'highscores_ids_hidden' => array(1,2,3,4,5,6,14), // this ids of players will be hidden on the highscores (should be ids of samples)
+	'highscores_length' => 50, // how many records per page on highscores
+
+	// powergaming page
+	'powergaming_length' => 50, // how many records per page on powergaming
+	'powergaming_account_id' => 1,
 
 	// characters page
 	'characters' => array( // what things to display on character view page (true/false in each option)
 		'level' => true,
 		'experience' => true,
-		'magic_level' => true,
-		'balance' => true,
-		'marriage_info' => true, // only 0.3
-		'outfit' => true,
+		'magic_level' => false,
+		'balance' => false,
+		'marriage_info' => false, // only 0.3
+		'outfit' => false,
 		'creation_date' => true,
-		'quests' => true,
-		'skills' => true,
-		'equipment' => true,
-		'frags' => true,
+		'quests' => false,
+		'skills' => false,
+		'equipment' => false,
+		'frags' => false,
+        'details' => false,
+        'achievements' => false,
 		'deleted' => false, // should deleted characters from same account be still listed on the list of characters? When enabled it will show that character is "[DELETED]"
 	),
 	'quests' => array( // Canary Storages
@@ -292,7 +299,7 @@ $config = array(
 	'signature_cache_time' => 5, // how long to store cached file (in minutes), default 5 minutes
 	'signature_browser_cache' => 60, // how long to cache by browser (in minutes), default 1 hour
 
-    'allow_menu_animated' => true, // allow menu with animated gifs
+    'allow_menu_animated' => false, // allow menu with animated gifs
 
 	// news page
 	'news_limit' => 5, // limit of news on the latest news page
@@ -307,18 +314,18 @@ $config = array(
 
 	// status bar
 	'status_bar' => true,
-	'client_link' => 'https://github.com/dudantas/tibia-client/releases/tag/13.21.13839', // link to download tibia client
-	'discord_link' => 'https://discord.com/invite/gvTj5sh9Mp', // link to join discord channel
-	'whatsapp_link' => '5511912345678', // wa.me/5511912345678
-	'instagram_link' => 'profile', // www.instagram.com/profile
-	'facebook_link' => 'page', // www.facebook.com/page
-	'collapse_status' => true,
+	'client_link' => 'https://drive.google.com/file/d/1lEAOPSuu3JJw6h6YNTrPtZIhmJvwi-Q6/view?usp=sharing', // link to download tibia client
+	'discord_link' => 'https://discord.gg/JTcZDeqFW6', // link to join discord channel
+	// 'whatsapp_link' => '5511912345678', // wa.me/5511912345678
+	// 'instagram_link' => 'profile', // www.instagram.com/profile
+	// 'facebook_link' => 'page', // www.facebook.com/page
+	'collapse_status' => false,
 
 	// events
 	'events_xml' => 'data/xml/events.xml',
 
 	// slide
-	'carousel_status' => true,
+	'carousel_status' => false,
 	'carousel' => array(
 		'carousel_1' => 'runemaster_small.jpg',
 		'carousel_2' => 'merrygarb_small.jpg',
@@ -326,7 +333,7 @@ $config = array(
 	),
 
 	// load page
-	'pace_load' => true, // load page top bar
+	'pace_load' => false, // load page top bar
 	'pace_theme' => 'flat-top', // big-counter, bounce, center-atom, center-circle, center-radar, center-simple, corner-indicator, fill-left, flash, flat-top, loading-bar, max-osx, material, minimal
 	'pace_color' => 'white', // black, blue, green, orange, pink, purple, red, silver, white, yellow
 
@@ -334,13 +341,16 @@ $config = array(
 	'bazaar_create' => 50, // price to create auction
 	'bazaar_tax' => 12, // tax to bid
 	'bazaar_bid' => 50, // price to bid
-	'bazaar_accountid' => 1, // account id to move auction character
+	'bazaar_accountid' => 2, // account id to move auction character
+    'outfits' => 'data/xml/outfits.xml',
+    'mounts' => 'data/xml/mounts.xml',
+    'highlight_auction' => true,
 
 	// gifts/shop system
 	'gifts_system' => true,
 
 	// support/system
-	'bug_report' => true, // this configurable has no effect, its always enabled
+	'bug_report' => false, // this configurable has no effect, its always enabled
 
 	// forum
 	'forum' => 'site', // link to the server forum, set to "site" if you want to use build in forum system, otherwise leave empty if you aren't going to use any forum
@@ -366,15 +376,15 @@ $config = array(
 	'status_interval' => 60,
 
 	// admin panel
-	'admin_panel_modules' => 'lastlogin,coinstransferable,coins,donates',
+	'admin_panel_modules' => 'lastlogin,coinstransferable,coins',
 
 	// other
 	'email_lai_sec_interval' => 60, // time in seconds between e-mails to one account from lost account interface, block spam
 	'google_analytics_id' => '', // e.g.: UA-XXXXXXX-X
 	'experiencetable_columns' => 4, // how many columns to display in experience table page. * experiencetable_rows, 5 = 500 (will show up to 500 level)
 	'experiencetable_rows' => 500, // till how many levels in one column
-	'date_timezone' => 'America/Sao_Paulo', // more info at http://php.net/manual/en/timezones.php
-	'footer_show_load_time' => true, // display load time of the page in the footer
+	'date_timezone' => 'Australia/Sydney', // more info at http://php.net/manual/en/timezones.php
+	'footer_show_load_time' => false, // display load time of the page in the footer
 
 	'npc' => [],
 

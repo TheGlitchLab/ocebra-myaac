@@ -94,6 +94,138 @@ if (!$getPageDetails) {
         <br>
     <?php } ?>
 
+        <div class="TableContainer">
+    <div class="CaptionContainer">
+        <div class="CaptionInnerContainer">
+            <span class="CaptionEdgeLeftTop" style="background-image:url(<?= $template_path; ?>/images/global/content/box-frame-edge.gif);"></span> <span class="CaptionEdgeRightTop" style="background-image:url(<?= $template_path; ?>/images/global/content/box-frame-edge.gif);"></span> <span class="CaptionBorderTop" style="background-image:url(<?= $template_path; ?>/images/global/content/table-headline-border.gif);"></span> <span class="CaptionVerticalLeft" style="background-image:url(<?= $template_path; ?>/images/global/content/box-frame-vertical.gif);"></span>
+            <div class="Text">Filter Auctions</div>
+            <span class="CaptionVerticalRight" style="background-image:url(<?= $template_path; ?>/images/global/content/box-frame-vertical.gif);"></span> <span class="CaptionBorderBottom" style="background-image:url(<?= $template_path; ?>/images/global/content/table-headline-border.gif);"></span> <span class="CaptionEdgeLeftBottom" style="background-image:url(<?= $template_path; ?>/images/global/content/box-frame-edge.gif);"></span> <span class="CaptionEdgeRightBottom" style="background-image:url(<?= $template_path; ?>/images/global/content/box-frame-edge.gif);"></span>
+        </div>
+    </div>
+    <table class="Table3" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td>
+                <div class="TableScrollbarWrapper" style="width: unset;">
+                    <div class="TableScrollbarContainer"> </div>
+                </div>
+                <div class="InnerTableContainer" style="max-width: unset;">
+                    <table style="width:100%;" id="FilterCharacterTrades">
+                        <tbody>
+                            <tr>
+                            <td>
+                                <div class="TableContentContainer">
+                                    <table class="TableContent" width="100%" style="border:1px solid #faf0d7;">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <form id="CharacterAuctionSearchBlock" action="https://nopvp.ferumbrinhaot.com.br/?currentcharactertrades" method="post">
+                                                    <div class="DisplayOptionsButton">
+                                                    <input type="hidden" name="source" value=""><input type="hidden" name="currentpage" value="1"><input type="hidden" name="order_column" value="101"><input type="hidden" name="order_direction" value="1"><input type="hidden" name="searchstring" value="">
+                                                    <div class="BigButton" style="background-image:url(<?= $template_path; ?>/images/global/buttons/sbutton.gif)">
+                                                        <div onmouseover="MouseOverBigButton(this);" onmouseout="MouseOutBigButton(this);">
+                                                            <div class="BigButtonOver" style="background-image:url(<?= $template_path; ?>/images/global/buttons/sbutton_over.gif);"></div>
+                                                            <input class="BigButtonText" type="submit" value="Apply">
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="DisplayOptionsContent">
+                                                    <div class="LabelV120 DisplayOptionsLabel">By Character:</div>
+                                                    <select name="filter_world" class="AuctionInput">
+                                                        <option value="">(all Worlds)</option>
+                                                    </select>
+                                                    <select name="filter_worldpvptype" id="filter_worldpvptype" class="AuctionInput" disabled>
+                                                        <option value="">(all PvP Types)</option>
+                                                        <option value="0">Open PvP</option>
+                                                        <option value="1">Optional PvP</option>
+                                                        <option value="2">Hardcore PvP</option>
+                                                        <option value="3">Retro Open PvP</option>
+                                                        <option value="4">Retro Hardcore PvP</option>
+                                                    </select>
+                                                    <select name="filter_worldbattleyestate" id="filter_worldbattleyestate" class="AuctionInput" disabled>
+                                                        <option value="">(BattlEye: all)</option>
+                                                        <option value="1">initially protected</option>
+                                                        <option value="2">protected</option>
+                                                        <option value="3">not protected</option>
+                                                    </select>
+                                                    </div>
+                                                    <div class="DisplayOptionsContent">
+                                                    <div class="LabelV120 DisplayOptionsLabel NotOnMobile"></div>
+                                                    <select name="filter_profession" class="AuctionInput">
+                                                        <option value="" selected="">(all Vocations)</option>
+                                                        <option value="0">No Vocation</option>
+                                                        <option value="1">Sorcerer</option>
+                                                        <option value="2">Druid</option>
+                                                        <option value="3">Paladin</option>
+                                                        <option value="4">Knight</option>
+                                                    </select>
+                                                    <div class="RangeFilter">
+                                                        <input class="AuctionInput LevelRangeInput" placeholder="(min char level)" type="text" name="filter_levelrangefrom" value="" maxlength="4">
+                                                        <div class="LevelRange"></div>
+                                                        <input class="AuctionInput LevelRangeInput" placeholder="(max char level)" type="text" name="filter_levelrangeto" value="" maxlength="4">
+                                                    </div>
+                                                    </div>
+                                                    <div class="DisplayOptionsContent">
+                                                    <div class="LabelV120 DisplayOptionsLabel NotOnMobile"></div>
+                                                    <select name="filter_skillid" class="AuctionInput">
+                                                                                                                <option value="" selected="">(no skill filter)</option>
+                                                                                                                <option value="3">Axe Fighting</option>
+                                                                                                                <option value="1">Club Fighting</option>
+                                                                                                                <option value="4">Distance Fighting</option>
+                                                                                                                <option value="6">Fishing</option>
+                                                                                                                <option value="9">Fist Fighting</option>
+                                                                                                                <option value="7">Magic Level</option>
+                                                                                                                <option value="5">Shielding</option>
+                                                                                                                <option value="2">Sword Fighting</option>
+                                                                                                            </select>
+                                                    <div class="RangeFilter">
+                                                        <input class="AuctionInput LevelRangeInput" placeholder="(min skill level)" type="text" name="filter_skillrangefrom" value="" maxlength="4">
+                                                        <div class="LevelRange"></div>
+                                                        <input class="AuctionInput LevelRangeInput" placeholder="(max skill level)" type="text" name="filter_skillrangeto" value="" maxlength="4">
+                                                    </div>
+                                                    </div>
+                                                    <div class="AuctionFilterHelper"></div>
+                                                    <div class="DisplayOptionsContent">
+                                                    <div class="LabelV120 DisplayOptionsLabel">Sort by:</div>
+                                                    <select name="order_column" class="AuctionInput">
+                                                                                                                <option value="100">Bid</option>
+                                                                                                                <option value="101">End Date</option>
+                                                                                                                <option value="103">Start Date</option>
+                                                                                                                <option value="0">------------------------</option>
+                                                                                                                <option value="102">Character Level</option>
+                                                                                                                <option value="0">------------------------</option>
+                                                                                                                <option value="3">Axe Fighting</option>
+                                                                                                                <option value="1">Club Fighting</option>
+                                                                                                                <option value="4">Distance Fighting</option>
+                                                                                                                <option value="6">Fishing</option>
+                                                                                                                <option value="9">Fist Fighting</option>
+                                                                                                                <option value="7">Magic Level</option>
+                                                                                                                <option value="5">Shielding</option>
+                                                                                                                <option value="2">Sword Fighting</option>
+                                                                                                            </select>
+                                                    <select name="order_direction" class="AuctionInputLong">
+                                                                                                                <option value="0">highest / latest</option>
+                                                                                                                <option value="1">lowest / earliest</option>
+                                                                                                            </select>
+                                                    </div>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <br>
+
     <div class="TableContainer">
         <div class="CaptionContainer">
             <div class="CaptionInnerContainer">
@@ -116,21 +248,43 @@ if (!$getPageDetails) {
                       style="background-image:url(<?= $template_path; ?>/images/global/content/box-frame-edge.gif);"></span>
             </div>
         </div>
+
         <table class="Table3" cellspacing="0" cellpadding="0">
             <tbody>
             <tr>
                 <td>
-                    <div class="InnerTableContainer">
-                        <table style="width:100%;">
-                            <tbody>
-                            <?php
-                            $subtopic = 'currentcharactertrades';
-                            $dateLimit = date('Y-m-d H:i:s');
-                            $auctions = $db->query("SELECT `id`, `account_old`, `account_new`, `player_id`, `price`, `date_end`, `date_start`, `bid_account`, `bid_price`, `status` FROM `myaac_charbazaar` WHERE `date_end` >= '{$dateLimit}' ORDER BY `date_start` DESC");
+                <div class="InnerTableContainer">
+                    <?php
+                        $subtopic = 'currentcharactertrades';
+                        $dateLimit = date('Y-m-d H:i:s');
+                        $auctions = $db->query("SELECT `id`, `account_old`, `account_new`, `player_id`, `price`, `date_end`, `date_start`, `bid_account`, `bid_price`, `status` FROM `myaac_charbazaar` WHERE `date_end` >= '{$dateLimit}' ORDER BY `date_start` DESC");
+
+                        if ($auctions->rowCount() > 0) {
                             require SYSTEM . 'pages/char_bazaar/list_auctions.php';
-                            ?>
-                            </tbody>
-                        </table>
+                        } else {
+                        ?>
+                            <div class="InnerTableContainer" style="max-width: unset;">
+                                            <table style="width:100%;">
+                                                <tbody>
+                                                                            <tr>
+                                                        <td>
+                                                            <div class="TableContentContainer">
+                                                                <table class="TableContent" width="100%" style="border:1px solid #faf0d7;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>No character auctions found.</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                                            </tbody>
+                                                </table>
+                                            </div>
+                        <?php
+                        }
+                    ?>
                     </div>
                 </td>
             </tr>
@@ -203,7 +357,7 @@ if ($getPageAction == 'bid') {
                           style="background-image:url(<?= $template_path; ?>/images/global/content/table-headline-border.gif);"></span>
                     <span class="CaptionVerticalLeft"
                           style="background-image:url(<?= $template_path; ?>/images/global/content/box-frame-vertical.gif);"></span>
-                    <div class="Text">You account</div>
+                    <div class="Text">Your account</div>
                     <span class="CaptionVerticalRight"
                           style="background-image:url(<?= $template_path; ?>/images/global/content/box-frame-vertical.gif);"></span>
                     <span class="CaptionBorderBottom"
@@ -230,7 +384,7 @@ if ($getPageAction == 'bid') {
                                                     <td style="font-weight:normal;"><?= $getAccount['coins'] ?>
                                                         <img
                                                             src="<?= $template_path; ?>/images/account/icon-tibiacoin.png">
-                                                        (<?= $getAccount['coins'] ?> <img
+                                                        (<?= $getAccount['coins_transferable'] ?> <img
                                                             src="<?= $template_path; ?>/images/account/icon-tibiacointrusted.png">)
                                                     </td>
                                                     <td style="font-weight:normal;"><?= $charbazaar_bid ?> <img

@@ -113,7 +113,7 @@ if($config['online_record']){
 
 	if(isset($query) && $query->rowCount() > 0){
 		$result = $query->fetch();
-		$record = '' . $result['record'] . ' players<br><small>'.date('d/m/Y, H:i:s', strtotime($result['timestamp'])).'</small>';
+        $record = $result['record'] . ' players (on ' . date('d/m/Y, H:i:s', strtotime($result['timestamp'])) . ')';
 	}
 }
 
