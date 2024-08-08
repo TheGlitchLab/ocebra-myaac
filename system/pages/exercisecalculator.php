@@ -1,96 +1,39 @@
 <?php $title = 'Exercise Calculator'; ?>
 <script>
 
-window.onload = function() {
-    var skillButtons = document.getElementsByName("skill");
-
-    // Disable all buttons on page load
-    for (var i = 0; i < skillButtons.length; i++) {
-        skillButtons[i].disabled = true;
-    }
-
-    document.getElementById("vocation").onchange = function() {
-        var vocation = this.value;
-        var currentskill = document.getElementById("currentskill");
-        var distanceButton = document.querySelector('button[value="distance"]');
-
-        if (vocation == "none") {
-            for (var i = 0; i < skillButtons.length; i++) {
-                skillButtons[i].disabled = true;
-            }
-        } else {
-            for (var i = 0; i < skillButtons.length; i++) {
-                skillButtons[i].disabled = false;
-            }
-
-            if (vocation == "knight" || vocation == "paladin"){
-                currentskill.value = 10;
-            } else {
-                currentskill.value = 0;
-            }
-
-            if (vocation == "knight") {
-                distanceButton.disabled = true;
-            }
-        }
-
-        for (var i = 0; i < skillButtons.length; i++) {
-            skillButtons[i].classList.remove("toggled");
-        }
-    }
-
-    document.getElementById('isVip').addEventListener('change', calculateTime);
-
-    document.getElementById('calculator_ew_remaining_charges').addEventListener('input', calculateTime);
-
-    function calculateTime() {
-        var hours, mins, secs, charges = document.getElementById('calculator_ew_remaining_charges').value;
-        var isVip = document.getElementById('isVip').checked;
-        var percent = 10; // Change this to the percentage you want
-        var speed = isVip ? 2 * (1 - percent / 100) : 2;
-        hours = Math.floor((charges * speed) / 3600);
-        charges -= hours * 3600 / speed;
-        mins = Math.floor((charges * speed) / 60);
-        charges -= mins * 60 / speed;
-        secs = charges * speed;
-        secs = (secs % 1 != 0) ? parseFloat(secs.toFixed(1)) : Math.floor(secs);
-        document.getElementById('calculator_ew_remaining_time').innerHTML = hours + ' hours, ' + mins + ' minutes and ' + secs + ' seconds';
-    }
-}
-
 //Each weapon is equivalent to 300k mana points - 600 ultimate mana potions * 500 average value, and all vocs progress their main skill at the same rate with the weapons
 function submit_exercise_form() {
-  vocation = document.getElementById("vocation").value;
+  vocation = document.getElementsByName("vocation");
   targetskill = document.getElementById("targetskill").value;
   currentskill = document.getElementById("currentskill").value;
-
- if (vocation == 'none') {
-    alert("Please select a vocation.");
-    return;
-  }
-
   skillButtons = document.getElementsByName("skill");
-  skill;
+  exerciseformresults = document.getElementById("exerciseformresults");
 
-  for (var i = 0; i < skillButtons.length; i++) {
-        if (skillButtons[i].classList.contains("toggled")) {
-            skill = skillButtons[i].value;
-            break;
-        }
+  vocation.forEach(voc => {
+    if (voc.checked) {
+      vocation = voc.value;
     }
+  });
 
-  if (!skill) {
-    alert("Please toggle a skill.");
+  skill = null;
+  skillButtons.forEach(button => {
+    if (button.classList.contains("toggled")) {
+      skill = button.value;
+    }
+  });
+
+  if (vocation == "none" || skill == null || targetskill == "" || currentskill == "") {
+    exerciseformresults.innerHTML = ""
     return;
   }
 
-  if (!(targetskill) || targetskill == 0) {
-    alert("Please enter a valid target skill.");
+  if (currentskill > targetskill) {
+    exerciseformresults.innerHTML = "<center>Current Skill cannot be higher than Desired Skill. Please select a valid current skill.</center>";
     return;
   }
 
   if (targetskill < currentskill) {
-    alert("Target skill must be higher than current skill.");
+    exerciseformresults.innerHTML = "<center>Desired Skill cannot be lower than Current Skill. Please select a valid desired skill.</center>";
     return;
   }
 
@@ -104,9 +47,7 @@ function submit_exercise_form() {
 
   cost_lasting_k = 7560
 
-  exerciseformrvalues = document.getElementById("vocation_exercise_form");
-  exerciseformresults = document.getElementById("exerciseformresults");
-  exerciseformresults.innerHTML = ""
+
 
   currentskillpercentage = document.getElementById("currentskillpercentage").value;
   if (currentskillpercentage.includes(",")) {
@@ -115,15 +56,43 @@ function submit_exercise_form() {
 
   IsDummy = document.getElementById("dummy").checked;
   IsEvent = document.getElementById("event").checked;
-  rate = document.getElementById("currentrate").value || 0;
+  rate = document.getElementById("currentrate").value || 1;
 
-  vocation_constant = 1.1
-
-  if (vocation == "paladin" && skill == "magic") {
-    vocation_constant = 1.4;
-  } else if (vocation == "knight" && skill == "magic") {
-    vocation_constant = 3.0;
+  if (vocation == "druid" || vocation == "sorcerer") {
+    if (skill == "magic") {
+      vocation_constant = 1.1;
+    } else if (skill == "shield") {
+      vocation_constant = 1.5;
+    } else {
+      vocation_constant = 2.0;
     }
+  }
+
+  if (vocation == "paladin") {
+    if (skill == "magic") {
+      vocation_constant = 1.4;
+    } else if (skill == "shield") {
+      vocation_constant = 1.1;
+    } else if (skill != "distance") {
+      vocation_constant = 1.2;
+    }
+    else {
+      vocation_constant = 1.1;
+    }
+  }
+
+  if (vocation == "knight") {
+    if (skill == "magic") {
+        vocation_constant = 3.0;
+    } else if (skill == "shield") {
+        vocation_constant = 1.1;
+    } else if (skill == "distance") {
+        vocation_constant = 1.4;
+    }
+    else {
+      vocation_constant = 1.1;
+    }
+  }
 
   points_required = main_skill_calculation_points_required(vocation_constant, currentskill, currentskillpercentage, targetskill, IsDummy, IsEvent, rate, 0)
 
@@ -153,11 +122,11 @@ function submit_exercise_form() {
     lasting_k_or_kk = "kk"
   }
 
-  exerciseformresults.innerHTML = "To get from skill <b>" + currentskill + "</b> to skill <b>" + targetskill + "</b>, you need to use a total of: <br><br><b>"
-      + regular_weapons_required + " regular exercise weapons</b>, at a cost of " + regular_cost + regular_k_or_kk + ", time required: " + Math.floor(regular_weapons_required / 3.6) + " hours and " + Math.round((regular_weapons_required % 3.6) * 16.67) + " minutes<br><br><b>"
-      + durable_weapons_required + " durable exercise weapons</b>, at a cost of " + durable_cost + durable_k_or_kk + ", time required: " + durable_weapons_required + " hours<br><br><b>"
-      + lasting_weapons_required + " lasting exercise weapons</b>, at a cost of " + lasting_cost + lasting_k_or_kk + ", time required: " + lasting_weapons_required * 8 + " hours";
-}
+  exerciseformresults.innerHTML = "To get from skill <b>" + currentskill + "</b> to skill <b>" + targetskill + "</b>, you need to use a total of: <br><br>"
+
+  + "<div style='padding-left: 20px;'>" + regular_weapons_required + " regular exercise weapons, at a cost of <b>" + regular_cost.toFixed(0) + regular_k_or_kk + "</b>, time required: " + Math.floor(regular_weapons_required / 3.6) + " hours and " + Math.round((regular_weapons_required % 3.6) * 16.67) + " minutes<br><br>"
+  + durable_weapons_required + " durable exercise weapons, at a cost of <b>" + durable_cost.toFixed(0) + durable_k_or_kk + "</b>, time required: " + durable_weapons_required + " hours<br><br>"
+  + lasting_weapons_required + " lasting exercise weapons, at a cost of <b>" + lasting_cost.toFixed(0) + lasting_k_or_kk + "</b>, time required: " + lasting_weapons_required * 8 + " hours</div>";}
 
 function main_skill_calculation_points_required(vocation_constant, currentskill, currentskillpercentage, targetskill, IsDummy, IsEvent, rate, skill_offset) {
   current_skill_total_points = total_skill_points_at_given_level(1600, vocation_constant, parseInt(currentskill) + 1, skill_offset)
@@ -203,6 +172,69 @@ function toggleButton(button) {
     skill = button.value;
 }
 
+window.onload = function() {
+  const skillButtons = document.getElementsByName("skill");
+  const currentskill = document.getElementById("currentskill").value;
+  const vocations = document.getElementsByName("vocation");
+
+  function disableAllButtons(value) {
+    skillButtons.forEach(button => button.disabled = value);
+  }
+
+  function removeToggledClassFromSkillButtons() {
+    skillButtons.forEach(button => button.classList.remove("toggled"));
+  }
+
+  function updateCurrentSkill() {
+    if (vocation.value != "none") {
+      skillButtons.forEach(button => {
+        if (button.classList.contains("toggled")) {
+          if (button.value == "magic" && currentskill != 0){
+            return;
+          } else {
+            currentskill = 0;
+          }
+          if (button.value != "magic" && currentskill > 10){
+            return;
+          } else {
+            currentskill = 10;
+          }
+        }
+      });
+    }
+  }
+
+  document.addEventListener('click', function(event) {
+    if (event.target.name === "skill") {
+      skillButtons.forEach(button => button.classList.remove("toggled"));
+      event.target.classList.add("toggled");
+    }
+  });
+
+  // document.getElementById('targetskill').onchange = submit_exercise_form;
+  // document.getElementById('currentskill').onchange = submit_exercise_form;
+  document.addEventListener('input', submit_exercise_form);
+  document.addEventListener('click', submit_exercise_form);
+  document.addEventListener('change', submit_exercise_form);
+
+  document.getElementById('isPremium').addEventListener('change', calculateTime);
+  document.getElementById('calculator_ew_remaining_charges').addEventListener('input', calculateTime);
+
+  function calculateTime() {
+      var hours, mins, secs, charges = document.getElementById('calculator_ew_remaining_charges').value;
+      var isPremium = document.getElementById('isPremium').checked;
+      var percent = 10;
+      var speed = isPremium ? 2 * (1 - percent / 100) : 2;
+      hours = Math.floor((charges * speed) / 3600);
+      charges -= hours * 3600 / speed;
+      mins = Math.floor((charges * speed) / 60);
+      charges -= mins * 60 / speed;
+      secs = charges * speed;
+      secs = (secs % 1 != 0) ? parseFloat(secs.toFixed(1)) : Math.floor(secs);
+      document.getElementById('calculator_ew_remaining_time').innerHTML = hours + ' hours, ' + mins + ' minutes and ' + secs + ' seconds';
+  }
+}
+
 </script>
 
 <div class="TableContentContainer">
@@ -212,14 +244,19 @@ function toggleButton(button) {
                 <td class="LabelV150 PlannerTopTableLabel">
                     <span>Vocation:</span>
                 </td>
-                <td id="LabelV150 PlannerTopTableLabel">
-                    <select id="vocation">
-                        <option value="none">-</option>
-                        <option value="knight">Knight</option>
-                        <option value="paladin">Paladin</option>
-                        <option value="druid">Druid</option>
-                        <option value="sorcerer">Sorcerer</option>
-                    </select>
+                <td style="display: flex; gap: 10px;">
+                  <label style="display: flex; align-items: center;">
+                      <input type="radio" name="vocation" value="knight" checked="checked"> Knight
+                  </label>
+                  <label style="display: flex; align-items: center;">
+                      <input type="radio" name="vocation" value="paladin"> Paladin
+                  </label>
+                  <label style="display: flex; align-items: center;">
+                      <input type="radio" name="vocation" value="druid"> Druid
+                  </label>
+                  <label style="display: flex; align-items: center;">
+                      <input type="radio" name="vocation" value="sorcerer"> Sorcerer
+                  </label>
                 </td>
             </tr>
             <tr>
@@ -228,8 +265,9 @@ function toggleButton(button) {
                 </td>
                 <td class="LabelV150 PlannerTopTableLabel" style="text-align: left;">
                     <button value="magic" name="skill" onclick="toggleButton(this)">Magic</button>
-                    <button value="melee" name="skill" onclick="toggleButton(this)">Club/Sword/Axe</button>
+                    <button value="melee" name="skill" onclick="toggleButton(this)">Club / Sword / Axe</button>
                     <button value="distance" name="skill" onclick="toggleButton(this)">Distance</button>
+                    <button value="shield" name="skill" onclick="toggleButton(this)">Shield</button>
                 </td>
             </tr>
             <tr>
@@ -237,7 +275,7 @@ function toggleButton(button) {
                     <span>Current Skill</span>
                 </td>
                 <td>
-                    <input type="number" id="currentskill" min="1" max="999" style="width:60px;">
+                    <input type="number" id="currentskill" value ="0" min="1" max="999" style="width:60px;">
                 </td>
                 <td class="LabelV150 PlannerTopTableLabel">
                     <span>Desired Skill</span>
@@ -258,9 +296,9 @@ function toggleButton(button) {
                 </td>
                 <td>
                     <input type="checkbox" id="dummy">
-                    <label for="dummy">Dummy</label>
+                    <label for="dummy">Exercise Dummy</label>
                     <input type="checkbox" id="event">
-                    <label for="event">Double Skill Event</label>
+                    <label for="event">Double Event</label>
                 </td>
             </tr>
             <tr>
@@ -268,20 +306,12 @@ function toggleButton(button) {
                     <span>Rate:</span>
                 </td>
                 <td>
-                    <input type="number" id="currentrate" min="1" max="999" style="width:60px;">
+                    <input type="number" id="currentrate" value="1" min="1" max="999" style="width:60px;">
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
-    <center>
-        <div class="BigButton" onclick="submit_exercise_form()" style="background-image:url(https://static.tibia.com/images/global/buttons/button_blue.gif)">
-            <div onmouseover="MouseOverBigButton(this);" onmouseout="MouseOutBigButton(this);">
-                <div class="BigButtonOver" style="background-image:url(https://static.tibia.com/images/global/buttons/button_blue_over.gif);"></div>
-                <input class="BigButtonText" type="submit" value="Submit">
-            </div>
-        </div>
-    </center>
     <p id="exerciseformresults"></p>
 
 <div class="TableContainer">
@@ -315,7 +345,7 @@ function toggleButton(button) {
                           <tr bgcolor="#D4C0A1">
                             <td width="60%">
                                 <label>Remaining charges: <input id="calculator_ew_remaining_charges" type="number" value="0" min="1" max="99999" style="width:70px;"></label>
-                                <label>VIP Account: <input type="checkbox" id="isVip"></label>
+                                <label>Premium Account: <input type="checkbox" id="isPremium"></label>
                             </td>
                             <td id="calculator_ew_remaining_time"></td>
                           </tr>

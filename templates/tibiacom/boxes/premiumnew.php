@@ -1,7 +1,7 @@
 <?php
 echo '<div class="Themebox" style="background-image:url(' . $template_path . '/images/themeboxes/premium/themebox.png); height: 204px;">
   <div id="PremiumBoxDecor" style="background-image:url(' . $template_path . '/images/themeboxes/premium/coin_animation.gif);"></div>
-  <div id="PremiumBoxBg" style="background-image:url(' . $template_path . '/images/themeboxes/donate/coins.gif);"></div>
+  <div id="PremiumBoxBg" style="background-image:url(' . $template_path . '/images/themeboxes/donate/coins_.gif);"></div>
   <div id="PremiumBoxOverlay" style="background-image:url(' . $template_path . '/images/themeboxes/premium/type_overlay.png);">
     <p id="PremiumBoxOverlayText">Exclusive Content!</p>
   </div>

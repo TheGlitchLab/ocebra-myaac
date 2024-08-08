@@ -1,3 +1,6 @@
+<? $title = 'Wheel of Destiny Planner'; ?>
+
+
 <link href="<?= $template_path; ?>/css/wheelofdestiny.css" rel="stylesheet" type="text/css" />
 <div class="BoxContent" style="background-image:url(https://static.tibia.com/images/global/content/scroll.gif);">
   <p id="wod-warning" class="hide">To use the Wheel of Destiny Planner, please ensure that JavaScript is enabled!</p>

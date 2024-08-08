@@ -1,6 +1,7 @@
 <?php
 
 $title = 'Powergamers';
+$number_of_rows = 0;
 
 $add_sql = '';
 $config_vocations = $config['vocations'];

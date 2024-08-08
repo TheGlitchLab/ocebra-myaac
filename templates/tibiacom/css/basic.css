@@ -672,7 +672,11 @@ img {
     text-align: center;
 }
 
-.InfoBar{position:relative;height:28px;top:6px;margin-left:5px;margin-right:5px;font-size:10px;color:#fff;font-family:Verdana,Arial,Times New Roman,sans-serif}.InfoBar a{border:0}.InfoBarBlock{margin-right:15px;border:0}.InfoBarBigLogo{margin-bottom:0;border:0}.InfoBarSmallElement{margin-left:5px;border:0}.InfoBarNumbers{top:-4px;position:relative}.InfoBar a{font-family:Verdana,Arial,Times New Roman,sans-serif;font-size:7pt;font-weight:400;color:#fff}.InfoBar a:link{color:#fff;font-weight:400;text-decoration:none}.InfoBar a:visited{color:#fff;font-weight:400;text-decoration:none}.InfoBar a:focus{color:#fff;font-weight:400;text-decoration:none}.InfoBar a:active{color:#fff;font-weight:400;text-decoration:underline}
+.InfoBar{position:relative;height:28px;top:6px;margin-left:5px;margin-right:5px;font-size:10px;color:#fff;font-family:Verdana,Arial,Times New Roman,sans-serif}.InfoBar a{border:0}.InfoBarBlock{margin-right:15px;border:0}.InfoBarBigLogo{
+  margin-bottom: 0;
+  margin-left: 10px;
+  border: 0
+}.InfoBarSmallElement{margin-left:5px;border:0}.InfoBarNumbers{top:-4px;position:relative}.InfoBar a{font-family:Verdana,Arial,Times New Roman,sans-serif;font-size:7pt;font-weight:400;color:#fff}.InfoBar a:link{color:#fff;font-weight:400;text-decoration:none}.InfoBar a:visited{color:#fff;font-weight:400;text-decoration:none}.InfoBar a:focus{color:#fff;font-weight:400;text-decoration:none}.InfoBar a:active{color:#fff;font-weight:400;text-decoration:underline}
 .InfoBar a:hover {
 	color:#fff !important;
 	font-weight:400 !important;

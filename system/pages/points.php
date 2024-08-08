@@ -58,8 +58,8 @@ $main_content .= '<style>
 .icon {
   position: absolute;
   left: 0;
-  top: 0;
-  height: 64px;
+  top: 6px;
+  height: 63px;
   width: 128px;
 }
 

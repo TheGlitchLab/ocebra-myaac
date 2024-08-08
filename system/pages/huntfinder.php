@@ -102,24 +102,105 @@ $hunts = [
         ],
         'level' => 400,
     ],
-    // '15' => [
-    //     'name' => 'Nagas',
-    //     'vocation' => 'Paladin',
-    //     'exp' => [
-    //         'minExp' => 2.5,
-    //         'maxExp' => 3,
-    //     ],
-    //     'level' => 400,
-    // ],
-    // '16' => [
-    //     'name' => 'Nagas',
-    //     'vocation' => 'Knight',
-    //     'exp' => [
-    //         'minExp' => 2.5,
-    //         'maxExp' => 3,
-    //     ],
-    //     'level' => 400,
-    // ],
+    '15' => [
+        'name' => 'Naga',
+        'vocation' => 'Paladin',
+        'exp' => [
+            'minExp' => 2.5,
+            'maxExp' => 3,
+        ],
+        'level' => 700,
+    ],
+    '16' => [
+        'name' => 'Cobra Bastion',
+        'vocation' => 'Knight',
+        'exp' => [
+            'minExp' => 2.5,
+            'maxExp' => 3,
+        ],
+        'level' => 400,
+    ],
+    '17' => [
+        'name' => 'Roshamuul West',
+        'vocation' => 'Knight',
+        'exp' => [
+            'minExp' => 2.5,
+            'maxExp' => 3,
+        ],
+        'level' => 400,
+    ],
+    '18' => [
+        'name' => 'Roshamuul East',
+        'vocation' => 'Paladin',
+        'exp' => [
+            'minExp' => 2.5,
+            'maxExp' => 3,
+        ],
+        'level' => 400,
+    ],
+    '19' => [
+        'name' => 'Souleater Mountains',
+        'vocation' => 'Druid',
+        'exp' => [
+            'minExp' => 2.5,
+            'maxExp' => 3,
+        ],
+        'level' => 400,
+    ],
+    '20' => [
+        'name' => 'Pirat Mines',
+        'vocation' => 'Knight',
+        'exp' => [
+            'minExp' => 2.5,
+            'maxExp' => 3,
+        ],
+        'level' => 200,
+    ],
+    '21' => [
+        'name' => 'Catacombs',
+        'vocation' => 'Paladin',
+        'exp' => [
+            'minExp' => 2.5,
+            'maxExp' => 3,
+        ],
+        'level' => 400,
+    ],
+    '22' => [
+        'name' => 'Old Fortress',
+        'vocation' => 'Paladin',
+        'exp' => [
+            'minExp' => 2.5,
+            'maxExp' => 3,
+        ],
+        'level' => 200,
+    ],
+    '23' => [
+        'name' => "Vampire Crypt",
+        'vocation' => 'Knight',
+        'exp' => [
+            'minExp' => 2.5,
+            'maxExp' => 3,
+        ],
+        'level' => 100,
+    ],
+    '24' => [
+        'name' => "Drefia Grim Reaper",
+        'vocation' => 'Knight',
+        'exp' => [
+            'minExp' => 2.5,
+            'maxExp' => 3,
+        ],
+        'level' => 200,
+    ],
+    '25' => [
+        'name' => "Draken Walls",
+        'vocation' => 'Knight',
+        'exp' => [
+            'minExp' => 2.5,
+            'maxExp' => 3,
+        ],
+        'level' => 250,
+    ],
 ];
 
 ?>
@@ -338,8 +419,8 @@ $hunts = [
     document.getElementById('level-input').addEventListener('input', filterAndDisplayHunts);
     document.querySelector('.vocation-select').addEventListener('change', filterAndDisplayHunts);
     window.onload = function () {
-        var userLevel = ''; // Set this to the user's level if available
-        var userVocation = 'all'; // Set this to the user's vocation if available
+        var userLevel = '';
+        var userVocation = 'all';
         filterAndDisplayHunts(userLevel, userVocation);
     };
     </script>

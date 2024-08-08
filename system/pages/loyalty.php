@@ -203,7 +203,7 @@
                                                             <tr bgcolor="#D4C0A1">
                                                                 <td>
                                                                     <center>
-                                                                        All <u>characters</u> associated with the
+                                                                        <u>All</u> characters associated with the
                                                                         account will enjoy the skill bonus corresponding
                                                                         to their title;
                                                                     </center>
@@ -249,88 +249,88 @@
                                                             </tr>
                                                             <tr class="loyalty" bgcolor="#F1E0C6">
                                                             <td width="30%"> Scout of <?= $config['lua']['serverName']; ?> </td>
-                                                                <td width="30%" align="center">-</td>
+                                                                <td width="30%" align="center">0</td>
                                                                 <td width="30%" align="center">
                                                                     <b>
-                                                                        <font color="green">0%</font>
+                                                                        <font color="green">+0</font>
                                                                     </b>
                                                                 </td>
                                                             </tr>
                                                             <tr class="loyalty" bgcolor="#D4C0A1">
                                                                 <td width="30%"> Sentinel of <?= $config['lua']['serverName']; ?> </td>
-                                                                <td width="30%" align="center">-</td>
+                                                                <td width="30%" align="center">1</td>
                                                                 <td width="30%" align="center"><b>
-                                                                        <font color="green">5%</font>
+                                                                        <font color="green">+1</font>
                                                                     </b></td>
                                                             </tr>
                                                             <tr class="loyalty" bgcolor="#F1E0C6">
                                                                 <td width="30%"> Steward of <?= $config['lua']['serverName']; ?> </td>
-                                                                <td width="30%" align="center">-</td>
+                                                                <td width="30%" align="center">3</td>
                                                                 <td width="30%" align="center"><b>
-                                                                        <font color="green">10%</font>
+                                                                        <font color="green">+2</font>
                                                                     </b></td>
                                                             </tr>
                                                             <tr class="loyalty" bgcolor="#D4C0A1">
                                                                 <td width="30%"> Warden of <?= $config['lua']['serverName']; ?> </td>
-                                                                <td width="30%" align="center">-</td>
+                                                                <td width="30%" align="center">6</td>
                                                                 <td width="30%" align="center"><b>
-                                                                        <font color="green">15%</font>
+                                                                        <font color="green">+3</font>
                                                                     </b></td>
                                                             </tr>
                                                             <tr class="loyalty" bgcolor="#F1E0C6">
                                                                 <td width="30%"> Squire of <?= $config['lua']['serverName']; ?> </td>
-                                                                <td width="30%" align="center">-</td>
+                                                                <td width="30%" align="center">9</td>
                                                                 <td width="30%" align="center"><b>
-                                                                        <font color="green">20%</font>
+                                                                        <font color="green">+4</font>
                                                                     </b></td>
                                                             </tr>
                                                             <tr class="loyalty" bgcolor="#D4C0A1">
                                                                 <td width="30%"> Warrior of <?= $config['lua']['serverName']; ?> </td>
-                                                                <td width="30%" align="center">-</td>
+                                                                <td width="30%" align="center">15</td>
                                                                 <td width="30%" align="center"><b>
-                                                                        <font color="green">25%</font>
+                                                                        <font color="green">+5</font>
                                                                     </b></td>
                                                             </tr>
                                                             <tr class="loyalty" bgcolor="#F1E0C6">
                                                                 <td width="30%"> Keeper of <?= $config['lua']['serverName']; ?> </td>
-                                                                <td width="30%" align="center">-</td>
+                                                                <td width="30%" align="center">21</td>
                                                                 <td width="30%" align="center"><b>
-                                                                        <font color="green">30%</font>
+                                                                        <font color="green">+6</font>
                                                                     </b></td>
                                                             </tr>
                                                             <tr class="loyalty" bgcolor="#D4C0A1">
                                                                 <td width="30%"> Guardian of <?= $config['lua']['serverName']; ?> </td>
-                                                                <td width="30%" align="center">-</td>
+                                                                <td width="30%" align="center">30</td>
                                                                 <td width="30%" align="center"><b>
-                                                                        <font color="green">35%</font>
+                                                                        <font color="green">+7</font>
                                                                     </b></td>
                                                             </tr>
                                                             <tr class="loyalty" bgcolor="#F1E0C6">
                                                                 <td width="30%"> Sage of <?= $config['lua']['serverName']; ?> </td>
-                                                                <td width="30%" align="center">-</td>
+                                                                <td width="30%" align="center">42</td>
                                                                 <td width="30%" align="center"><b>
-                                                                        <font color="green">40%</font>
+                                                                        <font color="green">+8</font>
                                                                     </b></td>
                                                             </tr>
                                                             <tr class="loyalty" bgcolor="#D4C0A1">
                                                                 <td width="30%"> Savant of <?= $config['lua']['serverName']; ?> </td>
-                                                                <td width="30%" align="center">-</td>
+                                                                <td width="30%" align="center">56</td>
                                                                 <td width="30%" align="center"><b>
-                                                                        <font color="green">45%</font>
+                                                                        <font color="green">+9</font>
                                                                     </b></td>
                                                             </tr>
                                                             <tr class="loyalty" bgcolor="#F1E0C6">
                                                                 <td width="30%"> Enlightened of <?= $config['lua']['serverName']; ?> </td>
-                                                                <td width="30%" align="center">-</td>
+                                                                <td width="30%" align="center">70</td>
                                                                 <td width="30%" align="center"><b>
-                                                                        <font color="green">50%</font>
+                                                                        <font color="green">+10</font>
                                                                     </b></td>
                                                             </tr>
                                                             <tr class="loyalty" bgcolor="#D4C0A1">
                                                                 <td width="30%"> The Most Honorable  of <?= $config['lua']['serverName']; ?> </td>
-                                                                <td width="30%" align="center">-</td>
+                                                                <td width="30%" align="center">?</td>
                                                                 <td width="30%" align="center"><b>
-                                                                        <font color="green">100%</font>
+                                                                        <font color="green">?</font>
                                                                     </b></td>
                                                             </tr>
                                                         </tbody>
